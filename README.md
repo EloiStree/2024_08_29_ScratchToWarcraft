@@ -9,6 +9,10 @@ Dans le cadre d'un atelier
 Example Scratch : https://scratch.mit.edu/projects/1061213031/
 
 
+## Guide d'installation
+
+https://youtu.be/X0UA4ckn2ws
+
 ## Installation
 
 Opera GX:   
@@ -24,7 +28,7 @@ Installer Python:
 [https://www.python.org/](https://www.python.org/)    
 
 Installer les modules:  
-`pip install pyperclip psutil pygetwindow`    
+`pip install pyperclip psutil pygetwindow websockets`    
 [![image](https://github.com/user-attachments/assets/37a65ff8-9fe4-44ea-9314-06693c1bdc36)](https://www.youtube.com/results?search_query=command+line+python)  
 
 
