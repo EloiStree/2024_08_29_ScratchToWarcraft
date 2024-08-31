@@ -9,7 +9,6 @@ target_udp_port = 7073
 bool_display_received = True
 
 
-
 async def handler(websocket, path):
     byte_counter = 0
     while True:
@@ -24,7 +23,11 @@ async def handler(websocket, path):
                     print(f"Target: {target_udp_ip}:{target_udp_port}")
             except ValueError:
                 pass
-            
-start_server = websockets.serve(handler, "localhost", server_websocket_port)
-asyncio.get_event_loop().run_until_complete(start_server)
-asyncio.get_event_loop().run_forever()
+
+while True:
+    try:
+        start_server = websockets.serve(handler, "localhost", server_websocket_port)
+        asyncio.get_event_loop().run_until_complete(start_server)
+        asyncio.get_event_loop().run_forever()
+    except ValueError:
+        print("Invalid input")            
