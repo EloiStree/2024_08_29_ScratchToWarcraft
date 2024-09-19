@@ -183,8 +183,13 @@ function ReconnectIfOffline(){
         for (var i = 0; i < elements.length; i++) {
             var element = elements[i];
             // Find elements with classes 'monitor_label_ci1ok' and 'monitor_value_3Yexa' within current element
-            var labelElement = element.querySelector('.monitor_label_ci1ok');
-            var valueElement = element.querySelector('.monitor_value_3Yexa');
+
+            // var labelElement = element.querySelector('.monitor_label_ci1ok');
+            // var valueElement = element.querySelector('.monitor_value_3Yexa');
+            // Apparent change in the class name
+
+            var labelElement = element.querySelector('.monitor_label_d5zL9');
+            var valueElement = element.querySelector('.monitor_value_ZEFKO');
 
             // Extract text content from label and value elements
             var label = labelElement ? labelElement.textContent.trim() : '';
