@@ -19,7 +19,7 @@ if __name__ == "__main__":
     time_between_jumps = 30
 
 while True:
-    for i in range(1, 5):
+    for i in range(1, 6):
         print("Wake up character " + str(i))
         send_udp_message(ip, port, i, jump_start)
         time.sleep(1)
