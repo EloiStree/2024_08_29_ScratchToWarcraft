@@ -364,7 +364,7 @@ async def async_task():
             keyboard_mappings[key.lower().replace(" ", "")] = keyboard_mappings.pop(key)
 
         # Define the UDP IP address and port to listen on
-        UDP_IP = "127.0.0.1" 
+        UDP_IP = "0.0.0.0" 
         
 
         # Create a UDP socket
