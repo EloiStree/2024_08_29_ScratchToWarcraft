@@ -23,11 +23,13 @@ use_print_log=True
 player_index_to_window_index ={}
 
 ## use to broadcast on target window from source index id
-player_index_to_window_index [0]= [0,1,2,3]
+player_index_to_window_index [0]= [0,1,2,3,5]
 player_index_to_window_index [1]= [0]
 player_index_to_window_index [2]= [1]
 player_index_to_window_index [3]= [2]
 player_index_to_window_index [4]= [3]
+player_index_to_window_index [5]= [4]
+player_index_to_window_index [6]= [5]
 player_index_to_window_index [10]= [0,1,2,3,4,5,6,7,8,9,10,11]
 
 
@@ -46,8 +48,17 @@ player_index_to_window_index [10]= [0,1,2,3,4,5,6,7,8,9,10,11]
 
 
 
+def get_local_ips():
+    local_ips = []
+    for interface, snics in psutil.net_if_addrs().items():
+        for snic in snics:
+            if snic.family == socket.AF_INET:
+                local_ips.append(snic.address)
+    return local_ips
 
-
+local_ips = get_local_ips()
+print(f"Local IPs: {local_ips}")
+            
 
 
 
@@ -388,6 +399,12 @@ async def async_task():
                     if use_print_log:
                         print(f"Value {int_value} ")
                     push_to_all_integer(int_value)
+                if byte_counter == 8:
+                    int_index = int.from_bytes(data[0:4], byteorder='little')
+                    int_value = int.from_bytes(data[4:8], byteorder='little')
+                    if use_print_log:
+                        print(f"Index {int_index} | Value {int_value}")
+                    push_to_index_integer(int_index, int_value)
                     
                 elif  byte_counter==12:
 
