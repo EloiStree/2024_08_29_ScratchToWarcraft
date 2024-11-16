@@ -8,9 +8,9 @@ Dans le cadre d'un atelier
 
 Example Scratch : https://scratch.mit.edu/projects/1061213031/
 
-[Language Supported ?](https://github.com/EloiStree?tab=repositories&q=wowintegerworkshop&type=&language=&sort=)
-Version C# UDP: https://github.com/EloiStree/2024_10_23_WowIntegerWorkshopCSharp
-Version Unity3D UDP: https://github.com/EloiStree/2024_11_16_WowIntegerWorkshopUnity3D
+[Language Supported ?](https://github.com/EloiStree?tab=repositories&q=wowintegerworkshop&type=&language=&sort=)  
+- Version C# UDP: https://github.com/EloiStree/2024_10_23_WowIntegerWorkshopCSharp   
+- Version Unity3D UDP: https://github.com/EloiStree/2024_11_16_WowIntegerWorkshopUnity3D  
 
 ## Guide d'installation
 [![image](https://github.com/user-attachments/assets/6187d039-14d4-4fcb-896f-84e08392761a)](https://youtu.be/X0UA4ckn2ws)  
