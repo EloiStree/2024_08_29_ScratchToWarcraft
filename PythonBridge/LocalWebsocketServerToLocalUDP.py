@@ -8,9 +8,13 @@ target_udp_ip = "127.0.0.1"
 target_udp_port = 7073
 bool_display_received = True
 
+print("Hello on the Websocke to UDP relay")
+print(f"Port In: {server_websocket_port}")
+print(f"Port Out: {target_udp_port}")
 
 async def handler(websocket, path):
     byte_counter = 0
+    print("Listening...")
     while True:
             global target_port
             data = await websocket.recv()

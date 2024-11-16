@@ -82,7 +82,6 @@ target_window_index = 0
 
 #window_title = "10 Second Ninja"
 ## window_title = "MORDHAU  "
-## window_title = "Hollow Knight"
 ## window_title = "Chrome"
 
 
@@ -197,6 +196,7 @@ def press_key(hexKeyCode):
     ii_.ki = KeyBdInput(hexKeyCode, 0x48, 0, 0, ctypes.pointer(extra))
     x = Input(ctypes.c_ulong(1), ii_)
     ctypes.windll.user32.SendInput(1, ctypes.pointer(x), ctypes.sizeof(x))
+    # PostInput 
 
 def release_key(hexKeyCode):
     extra = ctypes.c_ulong(0)
@@ -375,7 +375,8 @@ async def async_task():
             keyboard_mappings[key.lower().replace(" ", "")] = keyboard_mappings.pop(key)
 
         # Define the UDP IP address and port to listen on
-        UDP_IP = "0.0.0.0" 
+        UDP_IP = "127.0.0.1"  # PC LOCAL ON LY 
+        UDP_IP = "0.0.0.0" # ANY ONE
         
 
         # Create a UDP socket
