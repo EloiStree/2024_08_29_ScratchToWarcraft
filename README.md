@@ -8,6 +8,7 @@ Dans le cadre d'un atelier
 
 Example Scratch : https://scratch.mit.edu/projects/1061213031/
 
+Version C# UDP: https://github.com/EloiStree/2024_10_23_WowIntegerWorkshop
 
 ## Guide d'installation
 [![image](https://github.com/user-attachments/assets/6187d039-14d4-4fcb-896f-84e08392761a)](https://youtu.be/X0UA4ckn2ws)  
