@@ -368,10 +368,10 @@ PA1 | 253 | 0xFD | 1253 | 2253
 
 
 
-# Convert int with Micro Python and Arduino
+## Convert int with Micro Python and Arduino
 
 
-# Arduino Version  
+### Arduino Version  
 
 ``` ino
 
@@ -399,7 +399,7 @@ void intToBytes(int32_t value, uint8_t bytes[4]) {
 ```
 
 
-# Python version  
+### Python version  
 
 ``` py
 import struct
