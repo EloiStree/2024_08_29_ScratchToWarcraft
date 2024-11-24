@@ -361,3 +361,65 @@ PA1 | 253 | 0xFD | 1253 | 2253
 0xFB | 251 |   | 1251 | 2251
 0xFD | 253 |   | 1253 | 2253
 
+
+
+
+
+
+
+
+# Convert int with Micro Python and Arduino
+
+
+# Arduino Version  
+
+``` ino
+
+// ##########  RECEIVED INTEGER AS BYTES
+/// CONVERT FOUR BYTE IN LITTLE ENDIAN FORMAT TO SIGNED INTEGER 32 BITS
+// USE: byte bytes[4] = {0xC0, 0x1D, 0xFE, 0xFF};  // Little-endian encoding of -123456
+// USE: int32_t result = parseLittleEndian(bytes[0], bytes[1], bytes[2], bytes[3]);
+int32_t parseLittleEndian(byte b0, byte b1, byte b2, byte b3) {
+  // Combine bytes in little-endian order
+  return ((int32_t)b0) | ((int32_t)b1 << 8) | ((int32_t)b2 << 16) | ((int32_t)b3 << 24);
+}
+
+// ##########  SEND INTEGER TO BYTES
+// CONVERT SIGNE INTEGER INTO FOUR BYTES IN LITTLE ENDIAN
+// USE: int32_t value = -123456;
+// USE: byte bytes[4];
+// USE: intToBytes(value, bytes);
+void intToBytes(int32_t value, uint8_t bytes[4]) {
+  bytes[0] = value & 0xFF;         // Extract the lowest 8 bits
+  bytes[1] = (value >> 8) & 0xFF;  // Shift right by 8 bits and extract the next 8 bits
+  bytes[2] = (value >> 16) & 0xFF; // Shift right by 16 bits and extract the next 8 bits
+  bytes[3] = (value >> 24) & 0xFF; // Shift right by 24 bits and extract the highest 8 bits
+}
+
+```
+
+
+# Python version  
+
+``` py
+import struct
+
+# Pack means to turn into 1 and 0 from value with type
+# Unpack means to turn 1 and 0 in value with type
+# i  means signed integer
+# Q means long unsigned value (double of an integer)
+# < in little endian order
+
+
+byte_integer_value = struct.pack("<i", integer)
+unpacked_integer = struct.unpack("<i", byte_integer_value)[0]
+
+byte_index_integer_value = struct.pack("<ii", integer1, integer2)
+unpacked_integers = struct.unpack("<ii", byte_index_integer_value)
+
+byte_index_integer_date_value = struct.pack("<iiQ", integer1, integer2, date_value)
+unpacked_values = struct.unpack("<iiQ", byte_index_integer_date_value)
+
+```
+
+
