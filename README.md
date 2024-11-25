@@ -443,7 +443,7 @@ _You can find the original code here: [GitHub Repository](https://github.com/Elo
 
 
 
-| **   Short Description**                     | **Integer to Press** | **Integer to Release** |
+| **Short Description**                     | **Integer to Press** | **Integer to Release** |
 |-------------------------------------------|-----------------------|-------------------------|
 | Random input for all gamepads, no menu    | 1399                 | 2399                   |
 | Enable hardware joystick ON/OFF           | 1390                 | 2390                   |
