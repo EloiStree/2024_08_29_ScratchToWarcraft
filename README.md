@@ -372,6 +372,7 @@ PA1 | 253 | 0xFD | 1253 | 2253
 - 8888: percent height screen 0-9999
 
 Label | Press | Release
+- | - | -
 Mouse Left | 1260 | 2260
 Mouse Middle | 1261 | 2261
 Mouse Right | 1262 | 2262
