@@ -38,6 +38,7 @@ Installer les modules:
 
 ## Touches disponibles
 
+Source: https://learn.microsoft.com/en-us/windows/win32/inputdev/virtual-key-codes
 Key | Decimal | Hexadecimal | Press | Release
 -- | -- | -- | -- | --
 Backspace | 8 | 0x08 | 1008 | 2008
