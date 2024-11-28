@@ -364,6 +364,23 @@ PA1 | 253 | 0xFD | 1253 | 2253
 
 
 
+# If mouse ensable and only one account on screen
+
+**1599998888**
+- 15 Mouse Move type
+- 9999: percent width screen 0-9999
+- 8888: percent height screen 0-9999
+
+Label | Press | Release
+Mouse Left | 1260 | 2260
+Mouse Middle | 1261 | 2261
+Mouse Right | 1262 | 2262
+Mouse Button 4 | 1263 | 2263
+Mouse Button 5 | 1264 | 2264
+Mouse Double Click Left | 1265 | 2265
+Mouse Triple Click Left | 1266 | 2266
+Mouse Double Click Right | 1267 | 2267
+Mouse Triple Click Right | 1268 | 2268
 
 
 
