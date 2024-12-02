@@ -548,3 +548,27 @@ _You can find the original code here: [GitHub Repository](https://github.com/Elo
 | Set right trigger to 25%                  | 1389                 | 2389                   |
 
 
+
+
+
+# Steam Deck Button / Function Button
+
+On traditional keyboards, you have F1 to F12 keys, and in the past, there were F1 to F24 keys. These function keys were designed to be associated with specific callable functions. 
+
+This is essentially what devices like the Steam Deck and drum pads achieve today. They assign specific functions to buttons, enabling easy access to various features.
+
+In my proposed standard, I suggest reserving the range 1800-1999 for callable functions, effectively creating an extended set of function keys: F1 to F199.
+
+Example Mapping:
+```
+1800 -> 1999
+2800 -> 2899
+```
+
+### What will be stored there?  
+It depends entirely on the context. These could be any functions or actions required by the application or system in use.
+In the context of Scratch to Wow, we could list action that need to be triggerable but don't need to be store on a keystroke but write in the console from `/run script`
+
+![image 1](https://github.com/user-attachments/assets/337fbb09-6862-49d3-948c-99639f10bb86)  
+![image 2](https://github.com/user-attachments/assets/22244057-3f86-4f28-95a1-0a308c903ddb)  
+
