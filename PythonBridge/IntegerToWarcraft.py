@@ -8,16 +8,22 @@ import psutil
 import pygetwindow as gw
 import asyncio
 import threading
+import sys
 
 
-bool_use_real_key = True
 
 ## Port that app is listening to be used
 lisent_udp_port_to_interact = 7073
 ## What is the exact name to find in of the window we need to find.
-window_title = "Warcraft I Remastered"
 window_title = "World of Warcraft"
-window_title ="10 Second Ninja"
+
+
+# get parameter
+
+if len(sys.argv) > 1:
+    window_title = sys.argv[1]
+if len(sys.argv) > 2:
+    lisent_udp_port_to_interact = int(sys.argv[2])
 
 debug_at_pression_send=True
 
