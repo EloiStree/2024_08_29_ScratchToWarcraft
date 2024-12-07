@@ -15,8 +15,8 @@ bool_use_real_key = True
 ## Port that app is listening to be used
 lisent_udp_port_to_interact = 7073
 ## What is the exact name to find in of the window we need to find.
+window_title = "Warcraft I Remastered"
 window_title = "World of Warcraft"
-window_title = "Warcraft "
 
 debug_at_pression_send=True
 
