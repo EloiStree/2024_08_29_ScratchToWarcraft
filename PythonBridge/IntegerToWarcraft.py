@@ -17,6 +17,7 @@ lisent_udp_port_to_interact = 7073
 ## What is the exact name to find in of the window we need to find.
 window_title = "Warcraft I Remastered"
 window_title = "World of Warcraft"
+window_title ="10 Second Ninja"
 
 debug_at_pression_send=True
 
