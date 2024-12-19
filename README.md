@@ -546,6 +546,8 @@ _You can find the original code here: [GitHub Repository](https://github.com/Elo
 | Set right stick vertical to -0.25         | 1387                 | 2387                   |
 | Set left trigger to 25%                   | 1388                 | 2388                   |
 | Set right trigger to 25%                  | 1389                 | 2389                   |
+| Release ALL Touch                  | 1390                 | 2390                   |
+| Release ALL Touch  but menu        | 1391                 | 2391                   |
 
 
 
