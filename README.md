@@ -41,6 +41,8 @@ Installer les modules:
 Source: https://learn.microsoft.com/en-us/windows/win32/inputdev/virtual-key-codes
 Key | Decimal | Hexadecimal | Press | Release
 -- | -- | -- | -- | --
+Rlease All | 8 | 0x08 | 1000 | 2000
+Flush Timed Command | 8 | 0x08 | 1256 | 2256
 Backspace | 8 | 0x08 | 1008 | 2008
 Tab | 9 | 0x09 | 1009 | 2009
 Clear | 12 | 0x0C | 1012 | 2012
