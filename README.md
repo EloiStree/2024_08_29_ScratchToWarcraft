@@ -42,7 +42,7 @@ Source: https://learn.microsoft.com/en-us/windows/win32/inputdev/virtual-key-cod
 Key | Decimal | Hexadecimal | Press | Release
 -- | -- | -- | -- | --
 Rlease All | 0 | 0x00 | 1000 | 2000
-Flush Timed Command | 256 | 0xFF | 1256 | 2256
+Clear Timed Command | 256 | 0xFF | 1256 | 2256
 Backspace | 8 | 0x08 | 1008 | 2008
 Tab | 9 | 0x09 | 1009 | 2009
 Clear | 12 | 0x0C | 1012 | 2012
@@ -550,6 +550,7 @@ _You can find the original code here: [GitHub Repository](https://github.com/Elo
 | Set right trigger to 25%                  | 1389                 | 2389                   |
 | Release ALL Touch                  | 1390                 | 2390                   |
 | Release ALL Touch  but menu        | 1391                 | 2391                   |
+| Clear Timed Command        | 1398                 | 2398                   |
 
 
 
