@@ -34,14 +34,24 @@ use_print_log=True
 player_index_to_window_index ={}
 
 ## use to broadcast on target window from source index id
-player_index_to_window_index [0]= [0,1,2,3,5]
+player_index_to_window_index [0]= [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]
 player_index_to_window_index [1]= [0]
 player_index_to_window_index [2]= [1]
 player_index_to_window_index [3]= [2]
 player_index_to_window_index [4]= [3]
 player_index_to_window_index [5]= [4]
 player_index_to_window_index [6]= [5]
-player_index_to_window_index [10]= [0,1,2,3,4,5,6,7,8,9,10,11]
+player_index_to_window_index [7]= [6]
+player_index_to_window_index [8]= [7]
+player_index_to_window_index [9]= [8]
+player_index_to_window_index [10]= [9]
+player_index_to_window_index [11]= [10]
+player_index_to_window_index [12]= [11]
+player_index_to_window_index [13]= [12]
+player_index_to_window_index [14]= [13]
+player_index_to_window_index [15]= [14]
+player_index_to_window_index [16]= [15]
+player_index_to_window_index [42]= [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]
 
 
 
