@@ -12,6 +12,7 @@ Example Scratch : https://scratch.mit.edu/projects/1061213031/
 - Version C# UDP: https://github.com/EloiStree/2024_10_23_WowIntegerWorkshopCSharp   
 - Version Unity3D UDP: https://github.com/EloiStree/2024_11_16_WowIntegerWorkshopUnity3D
 - Version Pico W: https://github.com/EloiStree/2024_11_16_WowIntWorkshopPicoW
+- Version Python: https://github.com/EloiStree/2024_06_12_WowIntegerWorkshopPython
 
 ## Guide d'installation
 [![image](https://github.com/user-attachments/assets/6187d039-14d4-4fcb-896f-84e08392761a)](https://youtu.be/X0UA4ckn2ws)  
@@ -41,7 +42,7 @@ Installer les modules:
 Source: https://learn.microsoft.com/en-us/windows/win32/inputdev/virtual-key-codes
 Key | Decimal | Hexadecimal | Press | Release
 -- | -- | -- | -- | --
-Rlease All | 0 | 0x00 | 1000 | 2000
+Release All | 0 | 0x00 | 1000 | 2000
 Clear Timed Command | 256 | 0xFF | 1256 | 2256
 Backspace | 8 | 0x08 | 1008 | 2008
 Tab | 9 | 0x09 | 1009 | 2009
