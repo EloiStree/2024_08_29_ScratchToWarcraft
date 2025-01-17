@@ -3,10 +3,15 @@ from ctypes import wintypes
 import time
 import sys
 
-window_exact_name = "10 Second Ninja"
-bool_use_stretch = False
-window_exact_name = "World of Warcraft"
-bool_use_stretch = True
+bool_10_second_ninja_config = True
+if bool_10_second_ninja_config:
+    window_exact_name = "10 Second Ninja"
+    bool_use_stretch = True
+
+bool_world_of_warcraft_config = False
+if bool_world_of_warcraft_config:
+    window_exact_name = "World of Warcraft"
+    bool_use_stretch = True
 
 if len(sys.argv) > 1:
     window_exact_name = sys.argv[1]
