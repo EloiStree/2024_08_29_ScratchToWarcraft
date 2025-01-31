@@ -1,4 +1,9 @@
-# pip install pyperclip psutil pygetwindow
+# pip install pyperclip psutil pygetwindow pyautogui pynput
+
+# Note: This scripte don't work on Warcraft 1 and 2...
+# I have not idea yet why. Frustrating.
+# That why you have so much lib in this project. Maybe one will not have the bug.
+
 
 import ctypes
 import time
@@ -8,63 +13,15 @@ import psutil
 import pygetwindow as gw
 import asyncio
 import threading
-import sys
+from pynput.mouse import Button, Controller
+import pyautogui
+import win32api
+import win32con
 
-
-
-## Port that app is listening to be used
-lisent_udp_port_to_interact = 7073
-## What is the exact name to find in of the window we need to find.
-window_title = "World of Warcraft"
-
-
-# get parameter
-
-if len(sys.argv) > 1:
-    window_title = sys.argv[1]
-if len(sys.argv) > 2:
-    lisent_udp_port_to_interact = int(sys.argv[2])
-
+lisent_udp_port_to_interact = 7074
 debug_at_pression_send=True
-
-
 use_print_log=True
-
-
-player_index_to_window_index ={}
-
-## use to broadcast on target window from source index id
-player_index_to_window_index [0]= [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]
-player_index_to_window_index [1]= [0]
-player_index_to_window_index [2]= [1]
-player_index_to_window_index [3]= [2]
-player_index_to_window_index [4]= [3]
-player_index_to_window_index [5]= [4]
-player_index_to_window_index [6]= [5]
-player_index_to_window_index [7]= [6]
-player_index_to_window_index [8]= [7]
-player_index_to_window_index [9]= [8]
-player_index_to_window_index [10]= [9]
-player_index_to_window_index [11]= [10]
-player_index_to_window_index [12]= [11]
-player_index_to_window_index [13]= [12]
-player_index_to_window_index [14]= [13]
-player_index_to_window_index [15]= [14]
-player_index_to_window_index [16]= [15]
-player_index_to_window_index [42]= [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]
-
-
-
-
-
-
-
-
-
-
-
-
-
+use_print_log=False
 
 
 
@@ -80,101 +37,16 @@ def get_local_ips():
 local_ips = get_local_ips()
 print(f"Local IPs: {local_ips}")
             
-
-
-
-
-
-
-
-
-
-
-
 user32 = ctypes.windll.user32
-
-## ## ## ## ## ## ## ## 
-##  PUBLIC
-## ## ## ## ## ## ## ## 
-
-## What window index should we use ?
-target_window_index = 0
-
-
-#window_title = "10 Second Ninja"
-## window_title = "MORDHAU  "
-## window_title = "Chrome"
-
-
-
-
-
 
 
 ######################### NE PAS TOUCHER ############################
 ######################### DONT TOUCH ############################
 
 
-# Use real will simulate key, use false will send fake key
-
 # Constants for SendMessage
 WM_KEYDOWN = 0x0100
 WM_KEYUP = 0x0101
-
-
-
-# Find the window by its title
-def find_window(title):
-    return ctypes.windll.user32.FindWindowW(None, title)
-
-
-def get_all_windows(title):
-    list_window_found = [window for window in gw.getAllWindows() if title in window.title]
-    return list_window_found
-
-
-
-def find_in_all(title):
-    global target_window_index
-    list_window_found = [window for window in gw.getAllWindows() if title in window.title]
-    if list_window_found:
-        return list_window_found[0]
-    else:
-        return None
-    
-    
-def find_in_all(title, index):
-    global target_window_index
-    list_window_found = [window for window in gw.getAllWindows() if title in window.title]
-    if list_window_found and len(list_window_found) > index:
-        return list_window_found[index]
-    else:
-        return None
-def find_in_all_count(title):
-    global target_window_index
-    list_window_found = [window for window in gw.getAllWindows() if title in window.title]
-    if list_window_found :
-        return len(list_window_found)
-    else:
-        return 0
-
-
-
-
-
-all_found_windows_at_start = get_all_windows(window_title)
-
-
-
-first_window_foundhwnd = find_window(window_title)
-found_window_count= find_in_all_count(window_title)
-
-
-print (f"Window found:{first_window_foundhwnd} Count:{found_window_count}")
-
-for windowt in all_found_windows_at_start:
-    print("Window Title:", windowt.title)
-    print("Window ID:", windowt._hWnd)
 
 
 # Define the necessary structures
@@ -210,97 +82,36 @@ class Input(ctypes.Structure):
                 ("ii", Input_I)]
 
 
+bool_mode_ctype=False
+bool_mode_win32=True
+
 # Define the necessary functions
 def press_key(hexKeyCode):
-    extra = ctypes.c_ulong(0)
-    ii_ = Input_I()
-    ii_.ki = KeyBdInput(hexKeyCode, 0x48, 0, 0, ctypes.pointer(extra))
-    x = Input(ctypes.c_ulong(1), ii_)
-    ctypes.windll.user32.SendInput(1, ctypes.pointer(x), ctypes.sizeof(x))
-    # PostInput 
+    if bool_mode_win32:
+        win32api.keybd_event(hexKeyCode, 0, 0, 0)  # Press 't'
+    if bool_mode_ctype:
+        extra = ctypes.c_ulong(0)
+        ii_ = Input_I()
+        ii_.ki = KeyBdInput(hexKeyCode, 0x48, 0, 0, ctypes.pointer(extra))
+        x = Input(ctypes.c_ulong(1), ii_)
+        ctypes.windll.user32.SendInput(1, ctypes.pointer(x), ctypes.sizeof(x))
+        # PostInput 
 
 def release_key(hexKeyCode):
-    extra = ctypes.c_ulong(0)
-    ii_ = Input_I()
-    ii_.ki = KeyBdInput(hexKeyCode, 0x48, 0x0002, 0, ctypes.pointer(extra))
-    x = Input(ctypes.c_ulong(1), ii_)
-    ctypes.windll.user32.SendInput(1, ctypes.pointer(x), ctypes.sizeof(x))
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    if bool_mode_win32:
+        win32api.keybd_event(hexKeyCode, 0, win32con.KEYEVENTF_KEYUP, 0)  # Release 't'
+    
+    if bool_mode_ctype:
+        extra = ctypes.c_ulong(0)
+        ii_ = Input_I()
+        ii_.ki = KeyBdInput(hexKeyCode, 0x48, 0x0002, 0, ctypes.pointer(extra))
+        x = Input(ctypes.c_ulong(1), ii_)
+        ctypes.windll.user32.SendInput(1, ctypes.pointer(x), ctypes.sizeof(x))
 
 
 timebetweenaction=0.1
 timepress=0.1
 
-
-
-
-def enum_child_windows(parent_hwnd):
-    child_windows = []
-
-    def enum_child_proc(hwnd, lParam):
-        nonlocal child_windows
-        child_windows.append(hwnd)
-        return True  # Continue enumeration
-
-    # Convert the callback function to a C function pointer
-    EnumChildProc = ctypes.WINFUNCTYPE(ctypes.c_bool, ctypes.POINTER(ctypes.c_int), ctypes.POINTER(ctypes.c_int))
-
-    # Call EnumChildWindows with the parent window handle and the callback function
-    ctypes.windll.user32.EnumChildWindows(parent_hwnd, EnumChildProc(enum_child_proc), 0)
-
-    return child_windows
-
-def is_window_focused(hwnd):
-    return user32.GetForegroundWindow() == hwnd
-
-# def send_key(hwnd, key_code):
-    
-#         child_windows = enum_child_windows(hwnd)
-#         # for child_hwnd in child_windows:
-#         #     send_key_press(child_hwnd, key_code)
-#         #     time.sleep(0.1)  # Optional delay between keydown and keyup
-#         #     send_key_release(child_hwnd, key_code)
-
-def send_key_press(hwnd, key_code):
-   
-        
-        
-        ctypes.windll.user32.PostMessageW(int(hwnd), WM_KEYDOWN, int(key_code), 0)
-        # child_windows = enum_child_windows(hwnd)
-        # for child_hwnd in child_windows:
-        #     print(f"       Press child {str(hex_value)} to {child_hwnd }")  
-        #     ctypes.windll.user32.PostMessageW(child_hwnd, WM_KEYDOWN, char_value, 0)
-
-def send_key_release(hwnd, key_code):
-   
-        ctypes.windll.user32.PostMessageW(int(hwnd), WM_KEYUP, int(key_code), 0)
-        # child_windows = enum_child_windows(hwnd)
-        # for child_hwnd in child_windows:
-        #     print(f"       Release child {str(hex_value)} to {child_hwnd }")  
-        #     ctypes.windll.user32.PostMessageW(child_hwnd, WM_KEYUP, char_value, 0)
 
 
 
@@ -315,73 +126,99 @@ def check_and_copy(message):
         return False
 
 
+mouse = Controller()
+screen_size=pyautogui.size()
+
+def move_mouse_with_integer(int_value):
     
-
-def push_to_all_integer(int_value):
-    for key in player_index_to_window_index:
-        push_to_index_integer(key,int_value )
-
-def push_test(window, press, key_id):
-    global debug_at_pression_send
+    float_x:float = (int_value/10000 % 10000)/9999.0
+    float_y:float = (int_value % 10000)/9999.0
     
-
+    screen_size=pyautogui.size()
+    mouse.position = (screen_size[0]*float_x,screen_size[1]*(1.0-float_y))
     
-    print(f"Test {press} {key_id} to {window.title} / {window._hWnd}")
-    if window:
-        if press==True:
-            if debug_at_pression_send:
-                print(f"Press {key_id} to {window.title}")
-            send_key_press(window._hWnd, key_id)
-        else:
-            if debug_at_pression_send:
-                print(f"Release {key_id} to {window.title}")
-            send_key_release(window._hWnd, key_id)
-            
-
+    if use_print_log:
+        print(f"Move mouse to {screen_size[0]*float_x} {screen_size[1]*(1.0-float_y)}")
+    
+    
 
 def push_to_index_integer(int_index, int_value):
     global keyboard_mappings
+    
+    
+    
     #print("start")
-    #print(f"R | Index {int_index}| Value {int_value}")
+    if use_print_log:
+        print(f"R | Index {int_index}| Value {int_value}")
+
+    int_value_tag = int(int_value/100000000)
+    
+    if use_print_log:
+        print("Tag",int_value_tag)
+    if int_value_tag==15:
+        move_mouse_with_integer(int_value)
+        return
+    if int_value== 1260:
+        mouse.press(Button.left)
+        return
+        
+    elif int_value== 2260:
+        mouse.release(Button.left)
+        return
+    elif int_value== 1261:
+        mouse.press(Button.middle)
+        return
+    elif int_value== 2261:
+        mouse.release(Button.middle)
+        return
+    elif int_value== 1262:
+        mouse.press(Button.right)
+        return
+    elif int_value== 2262:
+        mouse.release(Button.right)
+        return
+    elif int_value== 1263:
+        mouse.press(Button.x1)
+        return
+    elif int_value== 2263:
+        mouse.release(Button.x1)
+        return
+    elif int_value== 1264:
+        mouse.press(Button.x2)
+        return
+    elif int_value== 2264:
+        mouse.release(Button.x2)
+        return
+        
+    
     key_name_last_found=""
     press_last_found=False
     one_found=False
-    
+
+
+
     key_info = key_map.try_to_guess_key(str(int_value))
     if key_info is None or key_info[0] is None:
         return
         
     
-    print(f"Push {int_value} to Window {int_index} ({key_info[0].name} / {key_info[0].hexadecimal})")
-    print(f"Push {key_info[0]}")
-
-    ## Is player index existing in register
-    if( int_index in player_index_to_window_index):
-        ## Get the list of window index for this player to broadcast
-        window_index_list = player_index_to_window_index[int_index]
-        ## For each window index to broadcast
-        for window_index in window_index_list:
-            ## If the window index in range of existing one at start
-            if window_index < len(all_found_windows_at_start):
-                    ## If the value is existing in the mapping allows to player
-                    int_value_as_string = str(int_value)
-                    
-                    print (f"{int_value}  {key_info[1]}   {key_info[2]}")
-                    
-                    if key_info[1]:
-                        push_test(all_found_windows_at_start[window_index], True, key_info[0].decimal)
-                        
-                    if key_info[2]:
-                        push_test(all_found_windows_at_start[window_index], False, key_info[0].decimal)
-                        
-        #if(one_found):
-        #    print(f"Index {int_index} | Value {int_value} | Key {key_name_last_found} | Press {press_last_found}")
-  
-   # print("Stop")
-
-
-
-
+    if use_print_log:
+        
+        print(f"Push {int_value} to Window {int_index} ({key_info[0].name} / {key_info[0].hexadecimal})")
+        print(f"Push {key_info[0]}")
+    ## If the value is existing in the mapping allows to player
+    int_value_as_string = str(int_value)
+    
+    
+    if use_print_log:
+        print (f"{int_value}  {key_info[1]}   {key_info[2]}")
+    
+    if key_info[1]:
+        press_key(int(key_info[0].decimal))
+        
+    if key_info[2]:
+        release_key(int(key_info[0].decimal))
+   
 
 
 async def async_task():
@@ -415,12 +252,14 @@ async def async_task():
                 
                 byte_counter = len(data)
                 #print("received message:", data)  
-                print(f"R| {len(data)} | {data}")
+                
+                if use_print_log:
+                    print(f"R| {len(data)} | {data}")
                 if byte_counter == 4:
                     int_value = int.from_bytes(data, byteorder='little')
                     if use_print_log:
                         print(f"Value {int_value} ")
-                    push_to_all_integer(int_value)
+                    push_to_index_integer(0,int_value)
                 if byte_counter == 8:
                     int_index = int.from_bytes(data[0:4], byteorder='little')
                     int_value = int.from_bytes(data[4:8], byteorder='little')
@@ -432,7 +271,7 @@ async def async_task():
 
                     int_value= int.from_bytes(data[0:4], byteorder='little')
                     long_data_2= int.from_bytes(data[4:12], byteorder='little')
-                    push_to_all_integer(int_value)
+                    push_to_index_integer(0,int_value)
                     if use_print_log:
                         print("Value ",int_value)
                         
@@ -446,12 +285,6 @@ async def async_task():
                     push_to_index_integer(int_index, int_value)
                     # thread = threading.Thread(target=push_to_index_integer, args=(int_index, int_value))
                     # thread.start()
-
-
-
-           
-                
-                    
         except KeyboardInterrupt:
             print("Server stopped.")
         
