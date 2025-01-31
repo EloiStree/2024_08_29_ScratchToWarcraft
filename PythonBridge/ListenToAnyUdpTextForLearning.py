@@ -2,7 +2,7 @@ import socket
 
 # Define the IP address and port number
 UDP_IP = "0.0.0.0"
-UDP_PORT = 7031
+UDP_PORT = 7072
 
 # Create a UDP socket
 sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
