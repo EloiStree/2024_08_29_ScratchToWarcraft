@@ -9,6 +9,8 @@ import pygetwindow as gw
 import asyncio
 import threading
 import sys
+import win32gui
+import ctypes.wintypes
 
 
 
@@ -57,7 +59,8 @@ player_index_to_window_index [42]= [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]
 
 
 
-
+focus_window_key_on= 1260
+focus_window_key_off= focus_window_key_on+1000
 
 
 
@@ -254,7 +257,80 @@ def release_key(hexKeyCode):
 timebetweenaction=0.1
 timepress=0.1
 
+bool_focus_with_foreground = False
+bool_focus_with_mouse = True
 
+
+
+window_border_padding_top = 33
+window_border_padding_bottom = 2
+window_border_padding_left = 9
+window_border_padding_right = window_border_padding_left
+
+def move_mouse_to_window_position(hwnd, left_to_right_screen_percent, down_top_screen_percent):
+    rect = ctypes.wintypes.RECT()
+    ctypes.windll.user32.GetWindowRect(hwnd, ctypes.byref(rect))
+    width = rect.right - rect.left
+    height = rect.bottom - rect.top
+    
+    x = rect.left + window_border_padding_left + int((width - window_border_padding_left - window_border_padding_right) * left_to_right_screen_percent)
+    y = rect.top + window_border_padding_top + int((height - window_border_padding_top - window_border_padding_bottom) * (1.0 - down_top_screen_percent))
+    
+    ctypes.windll.user32.SetCursorPos(x, y)
+    
+
+
+def click_in_middle(hwnd):
+            # Get the window's rectangle coordinates
+            rect = ctypes.wintypes.RECT()
+            ctypes.windll.user32.GetWindowRect(hwnd, ctypes.byref(rect))
+
+            # Calculate the middle point
+            middle_x = (rect.left + rect.right) // 2
+            middle_y = (rect.top + rect.bottom) // 2
+
+            # Move the mouse to the middle point
+            ctypes.windll.user32.SetCursorPos(middle_x, middle_y)
+
+            # Simulate mouse click
+            ctypes.windll.user32.mouse_event(0x0002, 0, 0, 0, 0)  # Mouse left button down
+            ctypes.windll.user32.mouse_event(0x0004, 0, 0, 0, 0)  # Mouse left button up
+            
+            
+def give_focus_to_window(hwnd):
+   
+    if bool_focus_with_foreground:
+        
+        # Generate but in World of warcraft in Python
+        # Note the the bug allow to use a xbox on all the account at the same time.
+        try:
+            if hwnd != 0:
+                # ctypes.windll.user32.SetForegroundWindow(hwnd)
+                #ctypes.windll.user32.SwitchToThisWindow(hwnd, True)
+                # Generate but in World of warcraft in Python
+                ctypes.windll.user32.SetFocus(hwnd)
+        except Exception as e:
+            print("Error while giving focus to window:", e)
+        
+    if bool_focus_with_mouse:
+        ctypes.windll.user32.ShowWindow(hwnd, 8)  # Restore and maximize the window
+        ctypes.windll.user32.ShowWindow(hwnd, 9)  # Restore and maximize the window
+        move_mouse_to_window_position(hwnd,0,0)
+        
+        
+        
+
+def focus_desktop():
+    
+    pass
+    # hwnd = user32.FindWindowW("Progman", None)
+    
+    # if hwnd == 0:
+    #     print("Could not find desktop window.")
+    #     return False
+    
+    # user32.SetForegroundWindow(hwnd)
+    # return True
 
 
 def enum_child_windows(parent_hwnd):
@@ -349,31 +425,50 @@ def push_to_index_integer(int_index, int_value):
     
     key_info = key_map.try_to_guess_key(str(int_value))
     if key_info is None or key_info[0] is None:
-        return
+        
+        if int_value==focus_window_key_off:
+            focus_desktop()
+        else:
+            ## Is player index existing in register
+            if( int_index in player_index_to_window_index):
+                ## Get the list of window index for this player to broadcast
+                window_index_list = player_index_to_window_index[int_index]
+                ## For each window index to broadcast
+                for window_index in window_index_list:
+                    ## If the window index in range of existing one at start
+                    if window_index < len(all_found_windows_at_start):
+                            h = all_found_windows_at_start[window_index]._hWnd
+                            if int_value==focus_window_key_on:
+                                click_in_middle(h)
+                        
+    else:
         
     
-    print(f"Push {int_value} to Window {int_index} ({key_info[0].name} / {key_info[0].hexadecimal})")
-    print(f"Push {key_info[0]}")
+        print(f"Push {int_value} to Window {int_index} ({key_info[0].name} / {key_info[0].hexadecimal})")
+        print(f"Push {key_info[0]}")
 
-    ## Is player index existing in register
-    if( int_index in player_index_to_window_index):
-        ## Get the list of window index for this player to broadcast
-        window_index_list = player_index_to_window_index[int_index]
-        ## For each window index to broadcast
-        for window_index in window_index_list:
-            ## If the window index in range of existing one at start
-            if window_index < len(all_found_windows_at_start):
-                    ## If the value is existing in the mapping allows to player
-                    int_value_as_string = str(int_value)
-                    
-                    print (f"{int_value}  {key_info[1]}   {key_info[2]}")
-                    
-                    if key_info[1]:
-                        push_test(all_found_windows_at_start[window_index], True, key_info[0].decimal)
+        ## Is player index existing in register
+        if( int_index in player_index_to_window_index):
+            ## Get the list of window index for this player to broadcast
+            window_index_list = player_index_to_window_index[int_index]
+            ## For each window index to broadcast
+            for window_index in window_index_list:
+                ## If the window index in range of existing one at start
+                if window_index < len(all_found_windows_at_start):
+                        h = all_found_windows_at_start[window_index]._hWnd
+                        ## If the value is existing in the mapping allows to player
+                        int_value_as_string = str(int_value)
                         
-                    if key_info[2]:
-                        push_test(all_found_windows_at_start[window_index], False, key_info[0].decimal)
+                        print (f"{int_value}  {key_info[1]}   {key_info[2]}")
                         
+                        if key_info[1]:
+                            push_test(all_found_windows_at_start[window_index], True, key_info[0].decimal)
+                            
+                        if key_info[2]:
+                            push_test(all_found_windows_at_start[window_index], False, key_info[0].decimal)
+                            
+               
+                            
         #if(one_found):
         #    print(f"Index {int_index} | Value {int_value} | Key {key_name_last_found} | Press {press_last_found}")
   

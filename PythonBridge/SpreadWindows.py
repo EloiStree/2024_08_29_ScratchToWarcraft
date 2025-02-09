@@ -3,12 +3,12 @@ from ctypes import wintypes
 import time
 import sys
 
-bool_10_second_ninja_config = True
+bool_10_second_ninja_config = False
 if bool_10_second_ninja_config:
     window_exact_name = "10 Second Ninja"
     bool_use_stretch = True
 
-bool_world_of_warcraft_config = False
+bool_world_of_warcraft_config = True
 if bool_world_of_warcraft_config:
     window_exact_name = "World of Warcraft"
     bool_use_stretch = True
@@ -54,7 +54,7 @@ if len(hwnd_list) == 1:
 elif len(hwnd_list) <= 4:
     columns = 2
 elif len(hwnd_list) <= 9:
-    columns = 3
+    columns = 4
 else:
     columns = 4
 
