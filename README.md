@@ -4,6 +4,11 @@ Apprendre la programmation par warcraft via Scratch 😁
 
 -----------
 
+Envie de vous essayer à l'atelier ?  
+Discord: [https://discord.gg/xytnYKRpzA](https://discord.gg/xytnYKRpzA)  
+
+-----------
+
 Dans le cadre d'un atelier
 
 Example Scratch : https://scratch.mit.edu/projects/1061213031/
