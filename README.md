@@ -365,7 +365,11 @@ PA1 | 253 | 0xFD | 1253 | 2253
 0xFB | 251 |   | 1251 | 2251
 0xFD | 253 |   | 1253 | 2253
 
+# Window Focus
 
+If you want to do some round robin with the Xbox, you need switch the Window Focus.
+`1260` Set the focus on the window
+`2260` Set the focus on the OS
 
 
 # If mouse ensable and only one account on screen
