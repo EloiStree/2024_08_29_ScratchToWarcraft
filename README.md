@@ -566,8 +566,22 @@ _You can find the original code here: [GitHub Repository](https://github.com/Elo
 | Clear Timed Command        | 1398                 | 2398                   |
 
 
+# GPIO on Raspberry Pi  
 
+Enables setting the GPIO to HIGH or LOW, provided the developer has the necessary permissions. Dev 0-40 refers to a list defined by the developer, specifying writable pins that can be used without explicitly identifying each pin.
 
+| Label | HIGH | LOW|
+| -| - |-|
+| GPIO1  | 1401 |2401|
+| GPIO2  | 1402 |2402|
+| GPIO3  | 1403 |2403|
+| GPIO3  | 14.. |24..|
+| GPIO40 | 1440 |2440|
+| Allowed by dev 1  | 1441 |2441|
+| Allowed by dev 2  | 1442 |2442|
+| Allowed by dev 3  | 1443 |2443|
+| Allowed by dev 3  | 144. |24..|
+| Allowed by dev 40 | 1480 |2480|
 
 # Steam Deck Button / Function Button
 
