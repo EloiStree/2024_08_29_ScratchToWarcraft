@@ -604,3 +604,13 @@ In the context of Scratch to Wow, we could list action that need to be triggerab
 ![image 1](https://github.com/user-attachments/assets/337fbb09-6862-49d3-948c-99639f10bb86)  
 ![image 2](https://github.com/user-attachments/assets/22244057-3f86-4f28-95a1-0a308c903ddb)  
 
+
+
+## Color Picking Tool
+
+Allows to export 11 Color RGB to other device
+```
+02 0 R G B Color Picking 0
+...
+02 9 R G B Color Picking 10
+```
