@@ -10,9 +10,7 @@ Discord: [https://discord.gg/xytnYKRpzA](https://discord.gg/xytnYKRpzA)
 -----------
 
 Dans le cadre d'un atelier
-
 Example Scratch : https://scratch.mit.edu/projects/1061213031/
-
 [Language Supported ?](https://github.com/EloiStree?tab=repositories&q=wowintegerworkshop&type=&language=&sort=)  
 - Version C# UDP: https://github.com/EloiStree/2024_10_23_WowIntegerWorkshopCSharp   
 - Version Unity3D UDP: https://github.com/EloiStree/2024_11_16_WowIntegerWorkshopUnity3D
@@ -41,6 +39,15 @@ Installer les modules:
 `pip install pyperclip psutil pygetwindow websockets`    
 [![image](https://github.com/user-attachments/assets/37a65ff8-9fe4-44ea-9314-06693c1bdc36)](https://www.youtube.com/results?search_query=command+line+python)  
 
+
+# C#
+
+Example of code in C# for Visual Studio:
+[![image](https://github.com/user-attachments/assets/6de0f76f-d0fb-4bd8-a06f-9ed372bb8f72)](https://youtu.be/qxmC8YoRqHY?t=16421)
+
+[https://github.com/EloiStree/2025_02_05_WarcraftClientQA](https://github.com/EloiStree/2025_02_05_WarcraftClientQA)
+- No code to Moving with C# https://youtu.be/qxmC8YoRqHY?t=16421
+- Move with Trigono https://youtu.be/QKGy2C7bsUI?t=7
 
 ## Touches disponibles
 
@@ -209,166 +216,6 @@ EraseEOF | 249 | 0xF9 | 1249 | 2249
 Play | 250 | 0xFA | 1250 | 2250
 Zoom | 251 | 0xFB | 1251 | 2251
 PA1 | 253 | 0xFD | 1253 | 2253
-0x08 | 8 |   | 1008 | 2008
-0x09 | 9 |   | 1009 | 2009
-0x0C | 12 |   | 1012 | 2012
-0x0D | 13 |   | 1013 | 2013
-0x10 | 16 |   | 1016 | 2016
-0x11 | 17 |   | 1017 | 2017
-0x12 | 18 |   | 1018 | 2018
-0x13 | 19 |   | 1019 | 2019
-0x14 | 20 |   | 1020 | 2020
-0x1B | 27 |   | 1027 | 2027
-0x1B | 27 |   | 1027 | 2027
-0x20 | 32 |   | 1032 | 2032
-0x21 | 33 |   | 1033 | 2033
-0x22 | 34 |   | 1034 | 2034
-0x23 | 35 |   | 1035 | 2035
-0x24 | 36 |   | 1036 | 2036
-0x25 | 37 |   | 1037 | 2037
-0x25 | 37 |   | 1037 | 2037
-0x26 | 38 |   | 1038 | 2038
-0x26 | 38 |   | 1038 | 2038
-0x27 | 39 |   | 1039 | 2039
-0x27 | 39 |   | 1039 | 2039
-0x28 | 40 |   | 1040 | 2040
-0x28 | 40 |   | 1040 | 2040
-0x29 | 41 |   | 1041 | 2041
-0x2A | 42 |   | 1042 | 2042
-0x2B | 43 |   | 1043 | 2043
-0x2C | 44 |   | 1044 | 2044
-0x2D | 45 |   | 1045 | 2045
-0x2E | 46 |   | 1046 | 2046
-0x30 | 48 |   | 1048 | 2048
-0x31 | 49 |   | 1049 | 2049
-0x32 | 50 |   | 1050 | 2050
-0x33 | 51 |   | 1051 | 2051
-0x34 | 52 |   | 1052 | 2052
-0x35 | 53 |   | 1053 | 2053
-0x36 | 54 |   | 1054 | 2054
-0x37 | 55 |   | 1055 | 2055
-0x38 | 56 |   | 1056 | 2056
-0x39 | 57 |   | 1057 | 2057
-0x41 | 65 |   | 1065 | 2065
-0x42 | 66 |   | 1066 | 2066
-0x43 | 67 |   | 1067 | 2067
-0x44 | 68 |   | 1068 | 2068
-0x45 | 69 |   | 1069 | 2069
-0x46 | 70 |   | 1070 | 2070
-0x47 | 71 |   | 1071 | 2071
-0x48 | 72 |   | 1072 | 2072
-0x49 | 73 |   | 1073 | 2073
-0x4A | 74 |   | 1074 | 2074
-0x4B | 75 |   | 1075 | 2075
-0x4C | 76 |   | 1076 | 2076
-0x4D | 77 |   | 1077 | 2077
-0x4E | 78 |   | 1078 | 2078
-0x4F | 79 |   | 1079 | 2079
-0x50 | 80 |   | 1080 | 2080
-0x51 | 81 |   | 1081 | 2081
-0x52 | 82 |   | 1082 | 2082
-0x53 | 83 |   | 1083 | 2083
-0x54 | 84 |   | 1084 | 2084
-0x55 | 85 |   | 1085 | 2085
-0x56 | 86 |   | 1086 | 2086
-0x57 | 87 |   | 1087 | 2087
-0x58 | 88 |   | 1088 | 2088
-0x59 | 89 |   | 1089 | 2089
-0x5A | 90 |   | 1090 | 2090
-0x5B | 91 |   | 1091 | 2091
-0x5C | 92 |   | 1092 | 2092
-0x5D | 93 |   | 1093 | 2093
-0x5F | 95 |   | 1095 | 2095
-0x60 | 96 |   | 1096 | 2096
-0x61 | 97 |   | 1097 | 2097
-0x62 | 98 |   | 1098 | 2098
-0x63 | 99 |   | 1099 | 2099
-0x64 | 100 |   | 1100 | 2100
-0x65 | 101 |   | 1101 | 2101
-0x66 | 102 |   | 1102 | 2102
-0x67 | 103 |   | 1103 | 2103
-0x68 | 104 |   | 1104 | 2104
-0x69 | 105 |   | 1105 | 2105
-0x6A | 106 |   | 1106 | 2106
-0x6B | 107 |   | 1107 | 2107
-0x6C | 108 |   | 1108 | 2108
-0x6D | 109 |   | 1109 | 2109
-0x6E | 110 |   | 1110 | 2110
-0x6F | 111 |   | 1111 | 2111
-0x70 | 112 |   | 1112 | 2112
-0x71 | 113 |   | 1113 | 2113
-0x72 | 114 |   | 1114 | 2114
-0x73 | 115 |   | 1115 | 2115
-0x74 | 116 |   | 1116 | 2116
-0x75 | 117 |   | 1117 | 2117
-0x76 | 118 |   | 1118 | 2118
-0x77 | 119 |   | 1119 | 2119
-0x78 | 120 |   | 1120 | 2120
-0x79 | 121 |   | 1121 | 2121
-0x7A | 122 |   | 1122 | 2122
-0x7B | 123 |   | 1123 | 2123
-0x7C | 124 |   | 1124 | 2124
-0x7D | 125 |   | 1125 | 2125
-0x7E | 126 |   | 1126 | 2126
-0x7F | 127 |   | 1127 | 2127
-0x80 | 128 |   | 1128 | 2128
-0x81 | 129 |   | 1129 | 2129
-0x82 | 130 |   | 1130 | 2130
-0x83 | 131 |   | 1131 | 2131
-0x84 | 132 |   | 1132 | 2132
-0x85 | 133 |   | 1133 | 2133
-0x86 | 134 |   | 1134 | 2134
-0x87 | 135 |   | 1135 | 2135
-0x90 | 144 |   | 1144 | 2144
-0x91 | 145 |   | 1145 | 2145
-0xA0 | 160 |   | 1160 | 2160
-0xA1 | 161 |   | 1161 | 2161
-0xA2 | 162 |   | 1162 | 2162
-0xA3 | 163 |   | 1163 | 2163
-0xA4 | 164 |   | 1164 | 2164
-0xA5 | 165 |   | 1165 | 2165
-0xA4 | 164 |   | 1164 | 2164
-0xA5 | 165 |   | 1165 | 2165
-0xA6 | 166 |   | 1166 | 2166
-0xA7 | 167 |   | 1167 | 2167
-0xA8 | 168 |   | 1168 | 2168
-0xA9 | 169 |   | 1169 | 2169
-0xAA | 170 |   | 1170 | 2170
-0xAB | 171 |   | 1171 | 2171
-0xAC | 172 |   | 1172 | 2172
-0xAD | 173 |   | 1173 | 2173
-0xAE | 174 |   | 1174 | 2174
-0xAF | 175 |   | 1175 | 2175
-0xB0 | 176 |   | 1176 | 2176
-0xB1 | 177 |   | 1177 | 2177
-0xB2 | 178 |   | 1178 | 2178
-0xB3 | 179 |   | 1179 | 2179
-0xB4 | 180 |   | 1180 | 2180
-0xB5 | 181 |   | 1181 | 2181
-0xB6 | 182 |   | 1182 | 2182
-0xB7 | 183 |   | 1183 | 2183
-0xBA | 186 |   | 1186 | 2186
-0xBB | 187 |   | 1187 | 2187
-0xBC | 188 |   | 1188 | 2188
-0xBD | 189 |   | 1189 | 2189
-0xBE | 190 |   | 1190 | 2190
-0xBF | 191 |   | 1191 | 2191
-0xC0 | 192 |   | 1192 | 2192
-0xDB | 219 |   | 1219 | 2219
-0xDC | 220 |   | 1220 | 2220
-0xDD | 221 |   | 1221 | 2221
-0xDE | 222 |   | 1222 | 2222
-0xDF | 223 |   | 1223 | 2223
-0xE2 | 226 |   | 1226 | 2226
-0xE5 | 229 |   | 1229 | 2229
-0xE7 | 231 |   | 1231 | 2231
-0xF6 | 246 |   | 1246 | 2246
-0xF7 | 247 |   | 1247 | 2247
-0xF8 | 248 |   | 1248 | 2248
-0xF9 | 249 |   | 1249 | 2249
-0xFA | 250 |   | 1250 | 2250
-0xFB | 251 |   | 1251 | 2251
-0xFD | 253 |   | 1253 | 2253
 
 # Window Focus
 
@@ -377,12 +224,15 @@ If you want to do some round robin with the Xbox, you need switch the Window Foc
 `2260` Set the focus on the OS
 
 
-# If mouse ensable and only one account on screen
+# Mouse Move
+
+If in OS context
 
 **1599998888**
-- 15 Mouse Move type
-- 9999: percent width screen 0-9999
-- 8888: percent height screen 0-9999
+- 15 Mouse Move in application focus screen
+  - 14 Mouse Move on OS screen
+- 9999: percent width screen 0-9999 Left Right
+- 8888: percent height screen 0-9999 Down Top
 
 
 | Label                   | Press | Release |
@@ -570,6 +420,7 @@ _You can find the original code here: [GitHub Repository](https://github.com/Elo
 
 Enables setting the GPIO to HIGH or LOW, provided the developer has the necessary permissions. Dev 0-40 refers to a list defined by the developer, specifying writable pins that can be used without explicitly identifying each pin.
 
+Write PIN
 | Label | HIGH | LOW|
 | -| - |-|
 | GPIO1  | 1401 |2401|
@@ -583,19 +434,277 @@ Enables setting the GPIO to HIGH or LOW, provided the developer has the necessar
 | Allowed by dev 3  | 144. |24..|
 | Allowed by dev 40 | 1480 |2480|
 
-# Steam Deck Button / Function Button
 
-On traditional keyboards, you have F1 to F12 keys, and in the past, there were F1 to F24 keys. These function keys were designed to be associated with specific callable functions. 
+Read PIN changed
+| Label | HIGH | LOW|
+| -| - |-|
+| GPIO1  | 1501 |2501|
+| GPIO2  | 1502 |2502|
+| GPIO3  | 1503 |2503|
+| GPIO3  | 15.. |25..|
+| GPIO40 | 1540 |2540|
+| Allowed by dev 1  | 1541 |2541|
+| Allowed by dev 2  | 1542 |2542|
+| Allowed by dev 3  | 1543 |2543|
+| Allowed by dev 3  | 154. |25..|
+| Allowed by dev 40 | 1580 |2580|
 
-This is essentially what devices like the Steam Deck and drum pads achieve today. They assign specific functions to buttons, enabling easy access to various features.
 
-In my proposed standard, I suggest reserving the range 1800-1999 for callable functions, effectively creating an extended set of function keys: F1 to F199.
+# UTF-8 Characters
 
-Example Mapping:
-```
-1800 -> 1999
-2800 -> 2899
-```
+I need to make a typing game and some tools for developers focusing on these characters: `~!@#$%^&*()_-+={}[]|\:;"'<>,.?/`.  
+Note that depending on the context, you can use clipboard operations or keystroke combinations to input these characters.
+It is up to the developer to choose the appropriate method based on constraints.  
+
+For example:  
+- On Windows, you can use **Alt + [numeric code]** on the numpad to input characters (e.g., **Alt + 96** for `` ` ``).  
+- This works for Unicode values up to 255, but many more are available beyond that.  
+
+| Char | Decimal | Short Description | 
+|------|---------|-------------------|
+|   | 4032 | SPACE 
+| | |Under Escape left of number|
+| ` | 4096 | GRAVE ACCENT 
+| ~ | 4126 | TILDE 
+| | |Numerical top key|
+| ! | 4033 | EXCLAMATION MARK 
+| @ | 4064 | COMMERCIAL AT 
+| # | 4035 | NUMBER SIGN 
+| $ | 4036 | DOLLAR SIGN 
+| % | 4037 | PERCENT SIGN 
+| ^ | 4094 | CIRCUMFLEX ACCENT 
+| & | 4038 | AMPERSAND 
+| * | 4042 | ASTERISK 
+| ( | 4040 | LEFT PARENTHESIS 
+| ) | 4041 | RIGHT PARENTHESIS 
+| | |Left of backspace char|
+| _ | 4095 | LOW LINE 
+| - | 4045 | HYPHEN-MINUS 
+| + | 4043 | PLUS SIGN 
+| = | 4061 | EQUALS SIGN 
+| | |Coding char top line|
+| \[ | 4091 | LEFT SQUARE BRACKET 
+| { | 4123 | LEFT CURLY BRACKET 
+| \] | 4093 | RIGHT SQUARE BRACKET 
+| } | 4125 | RIGHT CURLY BRACKET 
+| | | Ponctuation middle line|
+| ; | 4059 | SEMICOLON 
+| : | 4058 | COLON 
+| " | 4034 | QUOTATION MARK 
+| ' | 4039 | APOSTROPHE 
+| | | Ponctuation down line|
+| , | 4044 | COMMA 
+| < | 4060 | LESS-THAN SIGN 
+| . | 4046 | FULL STOP 
+| > | 4062 | GREATER-THAN SIGN 
+| / | 4047 | SOLIDUS 
+| ? | 4063 | QUESTION MARK 
+| | |Pinky finger left or right button|
+| \| | 4124 | VERTICAL LINE 
+| \ | 4092 | REVERSE SOLIDUS 
+| | |Special|
+| ¯ | 4175 | MACRON 
+| ´ | 4180 | ACUTE ACCENT 
+| × | 4215 | MULTIPLICATION SIGN 
+| ÷ | 4247 | DIVISION SIGN 
+|   | 4160 | NO-BREAK SPACE 
+
+Full list of the UTF8 Char as integer.
+
+| Char | Decimal | Short Description | 
+|------|---------|-------------------|
+|   | 4032 | SPACE 
+| ! | 4033 | EXCLAMATION MARK 
+| " | 4034 | QUOTATION MARK 
+| # | 4035 | NUMBER SIGN 
+| $ | 4036 | DOLLAR SIGN 
+| % | 4037 | PERCENT SIGN 
+| & | 4038 | AMPERSAND 
+| ' | 4039 | APOSTROPHE 
+| ( | 4040 | LEFT PARENTHESIS 
+| ) | 4041 | RIGHT PARENTHESIS 
+| * | 4042 | ASTERISK 
+| + | 4043 | PLUS SIGN 
+| , | 4044 | COMMA 
+| - | 4045 | HYPHEN-MINUS 
+| . | 4046 | FULL STOP 
+| / | 4047 | SOLIDUS 
+| 0 | 4048 | DIGIT ZERO 
+| 1 | 4049 | DIGIT ONE 
+| 2 | 4050 | DIGIT TWO 
+| 3 | 4051 | DIGIT THREE 
+| 4 | 4052 | DIGIT FOUR 
+| 5 | 4053 | DIGIT FIVE 
+| 6 | 4054 | DIGIT SIX 
+| 7 | 4055 | DIGIT SEVEN 
+| 8 | 4056 | DIGIT EIGHT 
+| 9 | 4057 | DIGIT NINE 
+| : | 4058 | COLON 
+| ; | 4059 | SEMICOLON 
+| < | 4060 | LESS-THAN SIGN 
+| = | 4061 | EQUALS SIGN 
+| > | 4062 | GREATER-THAN SIGN 
+| ? | 4063 | QUESTION MARK 
+| @ | 4064 | COMMERCIAL AT 
+| A | 4065 | LATIN CAPITAL LETTER A 
+| B | 4066 | LATIN CAPITAL LETTER B 
+| C | 4067 | LATIN CAPITAL LETTER C 
+| D | 4068 | LATIN CAPITAL LETTER D 
+| E | 4069 | LATIN CAPITAL LETTER E 
+| F | 4070 | LATIN CAPITAL LETTER F 
+| G | 4071 | LATIN CAPITAL LETTER G 
+| H | 4072 | LATIN CAPITAL LETTER H 
+| I | 4073 | LATIN CAPITAL LETTER I 
+| J | 4074 | LATIN CAPITAL LETTER J 
+| K | 4075 | LATIN CAPITAL LETTER K 
+| L | 4076 | LATIN CAPITAL LETTER L 
+| M | 4077 | LATIN CAPITAL LETTER M 
+| N | 4078 | LATIN CAPITAL LETTER N 
+| O | 4079 | LATIN CAPITAL LETTER O 
+| P | 4080 | LATIN CAPITAL LETTER P 
+| Q | 4081 | LATIN CAPITAL LETTER Q 
+| R | 4082 | LATIN CAPITAL LETTER R 
+| S | 4083 | LATIN CAPITAL LETTER S 
+| T | 4084 | LATIN CAPITAL LETTER T 
+| U | 4085 | LATIN CAPITAL LETTER U 
+| V | 4086 | LATIN CAPITAL LETTER V 
+| W | 4087 | LATIN CAPITAL LETTER W 
+| X | 4088 | LATIN CAPITAL LETTER X 
+| Y | 4089 | LATIN CAPITAL LETTER Y 
+| Z | 4090 | LATIN CAPITAL LETTER Z 
+| [ | 4091 | LEFT SQUARE BRACKET 
+| \ | 4092 | REVERSE SOLIDUS 
+| ] | 4093 | RIGHT SQUARE BRACKET 
+| ^ | 4094 | CIRCUMFLEX ACCENT 
+| _ | 4095 | LOW LINE 
+| ` | 4096 | GRAVE ACCENT 
+| a | 4097 | LATIN SMALL LETTER A 
+| b | 4098 | LATIN SMALL LETTER B 
+| c | 4099 | LATIN SMALL LETTER C 
+| d | 4100 | LATIN SMALL LETTER D 
+| e | 4101 | LATIN SMALL LETTER E 
+| f | 4102 | LATIN SMALL LETTER F 
+| g | 4103 | LATIN SMALL LETTER G 
+| h | 4104 | LATIN SMALL LETTER H 
+| i | 4105 | LATIN SMALL LETTER I 
+| j | 4106 | LATIN SMALL LETTER J 
+| k | 4107 | LATIN SMALL LETTER K 
+| l | 4108 | LATIN SMALL LETTER L 
+| m | 4109 | LATIN SMALL LETTER M 
+| n | 4110 | LATIN SMALL LETTER N 
+| o | 4111 | LATIN SMALL LETTER O 
+| p | 4112 | LATIN SMALL LETTER P 
+| q | 4113 | LATIN SMALL LETTER Q 
+| r | 4114 | LATIN SMALL LETTER R 
+| s | 4115 | LATIN SMALL LETTER S 
+| t | 4116 | LATIN SMALL LETTER T 
+| u | 4117 | LATIN SMALL LETTER U 
+| v | 4118 | LATIN SMALL LETTER V 
+| w | 4119 | LATIN SMALL LETTER W 
+| x | 4120 | LATIN SMALL LETTER X 
+| y | 4121 | LATIN SMALL LETTER Y 
+| z | 4122 | LATIN SMALL LETTER Z 
+| { | 4123 | LEFT CURLY BRACKET 
+| \| | 4124 | VERTICAL LINE 
+| } | 4125 | RIGHT CURLY BRACKET 
+| ~ | 4126 | TILDE 
+|   | 4160 | NO-BREAK SPACE 
+| ¡ | 4161 | INVERTED EXCLAMATION MARK 
+| ¢ | 4162 | CENT SIGN 
+| £ | 4163 | POUND SIGN 
+| ¤ | 4164 | CURRENCY SIGN 
+| ¥ | 4165 | YEN SIGN 
+| ¦ | 4166 | BROKEN BAR 
+| § | 4167 | SECTION SIGN 
+| ¨ | 4168 | DIAERESIS 
+| © | 4169 | COPYRIGHT SIGN 
+| ª | 4170 | FEMININE ORDINAL INDICATOR 
+| « | 4171 | LEFT-POINTING DOUBLE ANGLE QUOTATION MARK 
+| ¬ | 4172 | NOT SIGN 
+|   | 4173 | SOFT HYPHEN 
+| ® | 4174 | REGISTERED SIGN 
+| ¯ | 4175 | MACRON 
+| ° | 4176 | DEGREE SIGN 
+| ± | 4177 | PLUS-MINUS SIGN 
+| ² | 4178 | SUPERSCRIPT TWO 
+| ³ | 4179 | SUPERSCRIPT THREE 
+| ´ | 4180 | ACUTE ACCENT 
+| µ | 4181 | MICRO SIGN 
+| ¶ | 4182 | PILCROW SIGN 
+| · | 4183 | MIDDLE DOT 
+| ¸ | 4184 | CEDILLA 
+| ¹ | 4185 | SUPERSCRIPT ONE 
+| º | 4186 | MASCULINE ORDINAL INDICATOR 
+| » | 4187 | RIGHT-POINTING DOUBLE ANGLE QUOTATION MARK 
+| ¼ | 4188 | VULGAR FRACTION ONE QUARTER 
+| ½ | 4189 | VULGAR FRACTION ONE HALF 
+| ¾ | 4190 | VULGAR FRACTION THREE QUARTERS 
+| ¿ | 4191 | INVERTED QUESTION MARK 
+| À | 4192 | LATIN CAPITAL LETTER A WITH GRAVE 
+| Á | 4193 | LATIN CAPITAL LETTER A WITH ACUTE 
+| Â | 4194 | LATIN CAPITAL LETTER A WITH CIRCUMFLEX 
+| Ã | 4195 | LATIN CAPITAL LETTER A WITH TILDE 
+| Ä | 4196 | LATIN CAPITAL LETTER A WITH DIAERESIS 
+| Å | 4197 | LATIN CAPITAL LETTER A WITH RING ABOVE 
+| Æ | 4198 | LATIN CAPITAL LETTER AE 
+| Ç | 4199 | LATIN CAPITAL LETTER C WITH CEDILLA 
+| È | 4200 | LATIN CAPITAL LETTER E WITH GRAVE 
+| É | 4201 | LATIN CAPITAL LETTER E WITH ACUTE 
+| Ê | 4202 | LATIN CAPITAL LETTER E WITH CIRCUMFLEX 
+| Ë | 4203 | LATIN CAPITAL LETTER E WITH DIAERESIS 
+| Ì | 4204 | LATIN CAPITAL LETTER I WITH GRAVE 
+| Í | 4205 | LATIN CAPITAL LETTER I WITH ACUTE 
+| Î | 4206 | LATIN CAPITAL LETTER I WITH CIRCUMFLEX 
+| Ï | 4207 | LATIN CAPITAL LETTER I WITH DIAERESIS 
+| Ð | 4208 | LATIN CAPITAL LETTER ETH 
+| Ñ | 4209 | LATIN CAPITAL LETTER N WITH TILDE 
+| Ò | 4210 | LATIN CAPITAL LETTER O WITH GRAVE 
+| Ó | 4211 | LATIN CAPITAL LETTER O WITH ACUTE 
+| Ô | 4212 | LATIN CAPITAL LETTER O WITH CIRCUMFLEX 
+| Õ | 4213 | LATIN CAPITAL LETTER O WITH TILDE 
+| Ö | 4214 | LATIN CAPITAL LETTER O WITH DIAERESIS 
+| × | 4215 | MULTIPLICATION SIGN 
+| Ø | 4216 | LATIN CAPITAL LETTER O WITH STROKE 
+| Ù | 4217 | LATIN CAPITAL LETTER U WITH GRAVE 
+| Ú | 4218 | LATIN CAPITAL LETTER U WITH ACUTE 
+| Û | 4219 | LATIN CAPITAL LETTER U WITH CIRCUMFLEX 
+| Ü | 4220 | LATIN CAPITAL LETTER U WITH DIAERESIS 
+| Ý | 4221 | LATIN CAPITAL LETTER Y WITH ACUTE 
+| Þ | 4222 | LATIN CAPITAL LETTER THORN 
+| ß | 4223 | LATIN SMALL LETTER SHARP S 
+| à | 4224 | LATIN SMALL LETTER A WITH GRAVE 
+| á | 4225 | LATIN SMALL LETTER A WITH ACUTE 
+| â | 4226 | LATIN SMALL LETTER A WITH CIRCUMFLEX 
+| ã | 4227 | LATIN SMALL LETTER A WITH TILDE 
+| ä | 4228 | LATIN SMALL LETTER A WITH DIAERESIS 
+| å | 4229 | LATIN SMALL LETTER A WITH RING ABOVE 
+| æ | 4230 | LATIN SMALL LETTER AE 
+| ç | 4231 | LATIN SMALL LETTER C WITH CEDILLA 
+| è | 4232 | LATIN SMALL LETTER E WITH GRAVE 
+| é | 4233 | LATIN SMALL LETTER E WITH ACUTE 
+| ê | 4234 | LATIN SMALL LETTER E WITH CIRCUMFLEX 
+| ë | 4235 | LATIN SMALL LETTER E WITH DIAERESIS 
+| ì | 4236 | LATIN SMALL LETTER I WITH GRAVE 
+| í | 4237 | LATIN SMALL LETTER I WITH ACUTE 
+| î | 4238 | LATIN SMALL LETTER I WITH CIRCUMFLEX 
+| ï | 4239 | LATIN SMALL LETTER I WITH DIAERESIS 
+| ð | 4240 | LATIN SMALL LETTER ETH 
+| ñ | 4241 | LATIN SMALL LETTER N WITH TILDE 
+| ò | 4242 | LATIN SMALL LETTER O WITH GRAVE 
+| ó | 4243 | LATIN SMALL LETTER O WITH ACUTE 
+| ô | 4244 | LATIN SMALL LETTER O WITH CIRCUMFLEX 
+| õ | 4245 | LATIN SMALL LETTER O WITH TILDE 
+| ö | 4246 | LATIN SMALL LETTER O WITH DIAERESIS 
+| ÷ | 4247 | DIVISION SIGN 
+| ø | 4248 | LATIN SMALL LETTER O WITH STROKE 
+| ù | 4249 | LATIN SMALL LETTER U WITH GRAVE 
+| ú | 4250 | LATIN SMALL LETTER U WITH ACUTE 
+| û | 4251 | LATIN SMALL LETTER U WITH CIRCUMFLEX 
+| ü | 4252 | LATIN SMALL LETTER U WITH DIAERESIS 
+| ý | 4253 | LATIN SMALL LETTER Y WITH ACUTE 
+| þ | 4254 | LATIN SMALL LETTER THORN 
+| ÿ | 4255 | LATIN SMALL LETTER Y WITH DIAERESIS
+
 
 ### What will be stored there?  
 It depends entirely on the context. These could be any functions or actions required by the application or system in use.
@@ -606,11 +715,13 @@ In the context of Scratch to Wow, we could list action that need to be triggerab
 
 
 
-## Color Picking Tool
+## Color Line
 
-Allows to export 11 Color RGB to other device
+Allows to export line of color for Led and Color Picking context.
+
+02 00 99 88 77
 ```
-02 0 R G B Color Picking 0
+02 00 R G B Color  0
 ...
-02 9 R G B Color Picking 10
+02 99 R G B Color Picking 99
 ```
