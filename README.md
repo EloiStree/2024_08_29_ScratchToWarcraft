@@ -410,6 +410,7 @@ _You can find the original code here: [GitHub Repository](https://github.com/Elo
 
 Enables setting the GPIO to HIGH or LOW, provided the developer has the necessary permissions. Dev 0-40 refers to a list defined by the developer, specifying writable pins that can be used without explicitly identifying each pin.
 
+Write PIN
 | Label | HIGH | LOW|
 | -| - |-|
 | GPIO1  | 1401 |2401|
@@ -423,6 +424,20 @@ Enables setting the GPIO to HIGH or LOW, provided the developer has the necessar
 | Allowed by dev 3  | 144. |24..|
 | Allowed by dev 40 | 1480 |2480|
 
+
+Read PIN changed
+| Label | HIGH | LOW|
+| -| - |-|
+| GPIO1  | 1501 |2501|
+| GPIO2  | 1502 |2502|
+| GPIO3  | 1503 |2503|
+| GPIO3  | 15.. |25..|
+| GPIO40 | 1540 |2540|
+| Allowed by dev 1  | 1541 |2541|
+| Allowed by dev 2  | 1542 |2542|
+| Allowed by dev 3  | 1543 |2543|
+| Allowed by dev 3  | 154. |25..|
+| Allowed by dev 40 | 1580 |2580|
 
 
 # UTF-8 Characters
