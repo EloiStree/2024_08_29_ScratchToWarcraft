@@ -1,12 +1,6 @@
 # 2024_08_29_ScratchToWarcraft
 Apprendre la programmation par warcraft via Scratch 😁
 
-Example of code in C# for Visual Studio:
-[![image](https://github.com/user-attachments/assets/6de0f76f-d0fb-4bd8-a06f-9ed372bb8f72)](https://youtu.be/qxmC8YoRqHY?t=16421)
-
-[https://github.com/EloiStree/2025_02_05_WarcraftClientQA](https://github.com/EloiStree/2025_02_05_WarcraftClientQA)
-- No code to Moving with C# https://youtu.be/qxmC8YoRqHY?t=16421
-- Move with Trigono https://youtu.be/QKGy2C7bsUI?t=7
 
 -----------
 
@@ -16,9 +10,7 @@ Discord: [https://discord.gg/xytnYKRpzA](https://discord.gg/xytnYKRpzA)
 -----------
 
 Dans le cadre d'un atelier
-
 Example Scratch : https://scratch.mit.edu/projects/1061213031/
-
 [Language Supported ?](https://github.com/EloiStree?tab=repositories&q=wowintegerworkshop&type=&language=&sort=)  
 - Version C# UDP: https://github.com/EloiStree/2024_10_23_WowIntegerWorkshopCSharp   
 - Version Unity3D UDP: https://github.com/EloiStree/2024_11_16_WowIntegerWorkshopUnity3D
@@ -47,6 +39,15 @@ Installer les modules:
 `pip install pyperclip psutil pygetwindow websockets`    
 [![image](https://github.com/user-attachments/assets/37a65ff8-9fe4-44ea-9314-06693c1bdc36)](https://www.youtube.com/results?search_query=command+line+python)  
 
+
+# C#
+
+Example of code in C# for Visual Studio:
+[![image](https://github.com/user-attachments/assets/6de0f76f-d0fb-4bd8-a06f-9ed372bb8f72)](https://youtu.be/qxmC8YoRqHY?t=16421)
+
+[https://github.com/EloiStree/2025_02_05_WarcraftClientQA](https://github.com/EloiStree/2025_02_05_WarcraftClientQA)
+- No code to Moving with C# https://youtu.be/qxmC8YoRqHY?t=16421
+- Move with Trigono https://youtu.be/QKGy2C7bsUI?t=7
 
 ## Touches disponibles
 
