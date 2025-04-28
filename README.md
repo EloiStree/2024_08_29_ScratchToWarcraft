@@ -424,10 +424,67 @@ Enables setting the GPIO to HIGH or LOW, provided the developer has the necessar
 | Allowed by dev 40 | 1480 |2480|
 
 
-# UTF8 Char
-I need to make typing game and some tools for develper on the 9()[]{}\|/ ...
-So I added this array that is based on the UTF8 array starting at 1500 and 2500
-Here's the table with the last two columns removed:
+
+# UTF-8 Characters
+
+I need to make a typing game and some tools for developers focusing on these characters: `~!@#$%^&*()_-+={}[]|\:;"'<>,.?/`.  
+Note that depending on the context, you can use clipboard operations or keystroke combinations to input these characters.
+It is up to the developer to choose the appropriate method based on constraints.  
+
+For example:  
+- On Windows, you can use **Alt + [numeric code]** on the numpad to input characters (e.g., **Alt + 96** for `` ` ``).  
+- This works for Unicode values up to 255, but many more are available beyond that.  
+
+| Char | Decimal | Short Description | 
+|------|---------|-------------------|
+|   | 4032 | SPACE 
+| | |Under Escape left of number|
+| ` | 4096 | GRAVE ACCENT 
+| ~ | 4126 | TILDE 
+| | |Numerical top key|
+| ! | 4033 | EXCLAMATION MARK 
+| @ | 4064 | COMMERCIAL AT 
+| # | 4035 | NUMBER SIGN 
+| $ | 4036 | DOLLAR SIGN 
+| % | 4037 | PERCENT SIGN 
+| ^ | 4094 | CIRCUMFLEX ACCENT 
+| & | 4038 | AMPERSAND 
+| * | 4042 | ASTERISK 
+| ( | 4040 | LEFT PARENTHESIS 
+| ) | 4041 | RIGHT PARENTHESIS 
+| | |Left of backspace char|
+| _ | 4095 | LOW LINE 
+| - | 4045 | HYPHEN-MINUS 
+| + | 4043 | PLUS SIGN 
+| = | 4061 | EQUALS SIGN 
+| | |Coding char top line|
+| \[ | 4091 | LEFT SQUARE BRACKET 
+| { | 4123 | LEFT CURLY BRACKET 
+| \] | 4093 | RIGHT SQUARE BRACKET 
+| } | 4125 | RIGHT CURLY BRACKET 
+| | | Ponctuation middle line|
+| ; | 4059 | SEMICOLON 
+| : | 4058 | COLON 
+| " | 4034 | QUOTATION MARK 
+| ' | 4039 | APOSTROPHE 
+| | | Ponctuation down line|
+| , | 4044 | COMMA 
+| < | 4060 | LESS-THAN SIGN 
+| . | 4046 | FULL STOP 
+| > | 4062 | GREATER-THAN SIGN 
+| / | 4047 | SOLIDUS 
+| ? | 4063 | QUESTION MARK 
+| | |Pinky finger left or right button|
+| \| | 4124 | VERTICAL LINE 
+| \ | 4092 | REVERSE SOLIDUS 
+| | |Special|
+| ¯ | 4175 | MACRON 
+| ´ | 4180 | ACUTE ACCENT 
+| × | 4215 | MULTIPLICATION SIGN 
+| ÷ | 4247 | DIVISION SIGN 
+|   | 4160 | NO-BREAK SPACE 
+
+Full list of the UTF8 Char as integer.
 
 | Char | Decimal | Short Description | 
 |------|---------|-------------------|
