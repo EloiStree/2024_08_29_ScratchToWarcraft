@@ -10,7 +10,9 @@ Discord: [https://discord.gg/xytnYKRpzA](https://discord.gg/xytnYKRpzA)
 -----------
 
 Dans le cadre d'un atelier
-Example Scratch : https://scratch.mit.edu/projects/1061213031/
+Example Scratch : https://scratch.mit.edu/projects/1061213031/ https://scratch.mit.edu/projects/1018462085
+Tamper Monkey code: https://github.com/EloiStree/2024_08_29_ScratchToWarcraft/blob/main/PythonBridge/ScratchVarToLocalWebsocket.js
+
 [Language Supported ?](https://github.com/EloiStree?tab=repositories&q=wowintegerworkshop&type=&language=&sort=)  
 - Version C# UDP: https://github.com/EloiStree/2024_10_23_WowIntegerWorkshopCSharp   
 - Version Unity3D UDP: https://github.com/EloiStree/2024_11_16_WowIntegerWorkshopUnity3D
