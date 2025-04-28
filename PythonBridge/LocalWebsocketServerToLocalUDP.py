@@ -1,66 +1,71 @@
-import asyncio
-import websockets
+"""
+pip install tornado
+pip install websockets
+
+"""
+import tornado.ioloop
+import tornado.web
+import tornado.websocket
 import socket
 
+# Create a UDP socket
 udp_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 
-#### RECEIVE
-# What is the port number that the server will listen to?
-server_websocket_port= 7072
+# WebSocket server port number
+server_websocket_port = 7072
 
-#### SEND
-# What is the port number that the server will send the data to?
-#127.0.0.1 is your computer
-#192.168.1.1 is your usualy a home device
-#Make sure to be on the same LAN network.
-targets_udp_ip =["127.0.0.1","192.168.1.111" ] 
-# What is the port number that the server will send the data to?
-
-server_websocket_port= 7069
-target_udp_ip = "127.0.0.1"
+# Target IPs and target UDP port
+targets_udp_ip = ["127.0.0.1", "192.168.1.111"]
 target_udp_port = 7073
 
-
-# Do you want some debug text ?
+# Debug option
 bool_display_received = True
 
+print("Hello on the WebSocket to UDP relay")
+print(f"WebSocket Listening Port: {server_websocket_port}")
+print(f"UDP Target Port: {target_udp_port}")
 
-print("Hello on the Websocke to UDP relay")
-print(f"Port In: {server_websocket_port}")
-print(f"Port Out: {target_udp_port}")
+# WebSocket handler to manage the WebSocket connections
+class WebSocketHandler(tornado.websocket.WebSocketHandler):
+    byte_counter = 0  # Track the total number of bytes
 
+    def open(self):
+        print("WebSocket opened")
+        self.write_message("Hello! WebSocket connected.")
 
-async def handler(websocket, path):
-    byte_counter = 0
-    print("Listening...")
-    while True:
-            global target_port
-            data = await websocket.recv()
-            try:
-                # Relay received information to the UDP server
-                for ip in targets_udp_ip:
-                    udp_socket.sendto(data, (ip, target_udp_port))
-                    # Count number of bytes sent to measure the traffic
-                    byte_counter += 8 + len(data)
-                
-                if(bool_display_received):
-                    print(f"Received {len(data)} | {data}")
-                    print(f"Sent {byte_counter} bytes, {byte_counter/(1024)} KB, {byte_counter/(1024*1024)} MB")
-                    print(f"Target: {targets_udp_ip}:{target_udp_port}")
-            except ValueError:
-                pass
+    def on_message(self, message):
+        # Relay received data to the UDP targets
+        try:
+            for ip in targets_udp_ip:
+                udp_socket.sendto(message, (ip, target_udp_port))
 
-# LOCALHOST: You only want to receive data from your own computer
-lisentToAddressComingFrom="localhost"
-# 0.0.0.0: You want to receive data from any computer
-lisentToAddressComingFrom="0.0.0.0"
+            # Update the byte counter
+            WebSocketHandler.byte_counter += len(message)
 
-print(f"Start server... From {lisentToAddressComingFrom}:{server_websocket_port} to {targets_udp_ip}:{target_udp_port}")
-while True:
-    try:
-        start_server = websockets.serve(handler, lisentToAddressComingFrom, server_websocket_port)
-        start_server = websockets.serve(handler, "0.0.0.0", server_websocket_port)
-        asyncio.get_event_loop().run_until_complete(start_server)
-        asyncio.get_event_loop().run_forever()
-    except ValueError:
-        print("Invalid input")            
+            if bool_display_received:
+                print(f"Received {len(message)} bytes | {message}")
+                print(f"Sent total {WebSocketHandler.byte_counter} bytes ({WebSocketHandler.byte_counter/1024:.2f} KB, {WebSocketHandler.byte_counter/(1024*1024):.2f} MB)")
+                print(f"Targets: {targets_udp_ip} on port {target_udp_port}")
+        except Exception as e:
+            print(f"Error: {e}")
+
+    def on_close(self):
+        print("WebSocket closed")
+
+    def check_origin(self, origin):
+        # Allow all origins
+        return True
+
+# Application setup
+def make_app():
+    return tornado.web.Application([
+        (r"/", WebSocketHandler),
+    ])
+
+# Server setup
+if __name__ == "__main__":
+    print(f"Starting server... Listening on 0.0.0.0:{server_websocket_port}")
+    app = make_app()
+    app.listen(server_websocket_port)
+    tornado.ioloop.IOLoop.current().start()
+
