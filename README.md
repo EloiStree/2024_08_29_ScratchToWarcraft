@@ -2,8 +2,11 @@
 Apprendre la programmation par warcraft via Scratch 😁
 
 Example of code in C# for Visual Studio:
-[https://github.com/EloiStree/2025_02_05_WarcraftClientQA](https://github.com/EloiStree/2025_02_05_WarcraftClientQA)
+[![image](https://github.com/user-attachments/assets/6de0f76f-d0fb-4bd8-a06f-9ed372bb8f72)](https://youtu.be/qxmC8YoRqHY?t=16421)
 
+[https://github.com/EloiStree/2025_02_05_WarcraftClientQA](https://github.com/EloiStree/2025_02_05_WarcraftClientQA)
+- No code to Moving with C# https://youtu.be/qxmC8YoRqHY?t=16421
+- Move with Trigono https://youtu.be/QKGy2C7bsUI?t=7
 
 -----------
 
