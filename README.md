@@ -1,6 +1,9 @@
 # 2024_08_29_ScratchToWarcraft
 Apprendre la programmation par warcraft via Scratch 😁
 
+Example of code in C# for Visual Studio:
+[https://github.com/EloiStree/2025_02_05_WarcraftClientQA](https://github.com/EloiStree/2025_02_05_WarcraftClientQA)
+
 
 -----------
 
