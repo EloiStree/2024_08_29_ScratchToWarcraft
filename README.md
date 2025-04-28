@@ -217,12 +217,15 @@ If you want to do some round robin with the Xbox, you need switch the Window Foc
 `2260` Set the focus on the OS
 
 
-# If mouse ensable and only one account on screen
+# Mouse Move
+
+If in OS context
 
 **1599998888**
-- 15 Mouse Move type
-- 9999: percent width screen 0-9999
-- 8888: percent height screen 0-9999
+- 15 Mouse Move in application focus screen
+  - 14 Mouse Move on OS screen
+- 9999: percent width screen 0-9999 Left Right
+- 8888: percent height screen 0-9999 Down Top
 
 
 | Label                   | Press | Release |
