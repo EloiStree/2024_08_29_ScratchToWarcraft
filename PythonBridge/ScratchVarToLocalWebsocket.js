@@ -43,7 +43,7 @@ var socketUrl= 'ws://localhost:7072';
     
 // If you use relay server on your computer
 socketUrl= 'ws://localhost:7072';
-
+/////////////////////////////////////////////// SWICH THOSE LINE BASED ON YOUR GOAL.
 // If you use the default pi server behind ddns
 socketUrl= 'wss://apint.ddns.net:4725/';
 
