@@ -39,6 +39,16 @@ console.log("Hello Tamper to Integer :).\n Websocket client will try to connect 
 
 // Creating url to push on local computer at the port 7073 the integer that changed.
 var socketUrl= 'ws://localhost:7072';
+    
+    
+// If you use relay server on your computer
+socketUrl= 'ws://localhost:7072';
+
+// If you use the default pi server behind ddns
+socketUrl= 'wss://apint.ddns.net:4725/';
+
+console.log("Server link : "+socketUrl);
+
 // Defined the var of the future websocket client
 var socket = null;
 // Will be use to have a way to know that the server is still in theory connected
@@ -117,6 +127,7 @@ function ReconnectIfOffline(){
             if(useConsoleDebug)
             console.log('Try estabalish connection with: '+socketUrl);
             socket = new WebSocket(socketUrl);
+            //socket = new WebSocket(socketUrl, null, { rejectUnauthorized: false });
             // Event listener for when the connection is established
             socket.addEventListener('open', () => {
                 console.log('WebSocket connection established');
