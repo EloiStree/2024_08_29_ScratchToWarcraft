@@ -38,7 +38,7 @@ Installer Python:
 [https://www.python.org/](https://www.python.org/)    
 
 Installer les modules:  
-`pip install pyperclip psutil pygetwindow websockets`    
+`pip install pyperclip psutil pygetwindow websockets pywin32`    
 [![image](https://github.com/user-attachments/assets/37a65ff8-9fe4-44ea-9314-06693c1bdc36)](https://www.youtube.com/results?search_query=command+line+python)  
 
 
