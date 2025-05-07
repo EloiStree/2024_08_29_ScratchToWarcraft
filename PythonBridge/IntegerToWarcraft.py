@@ -1,6 +1,7 @@
 # pip install pyperclip psutil pygetwindow
 
 import ctypes
+import struct
 import time
 import socket
 import pyperclip
@@ -31,7 +32,7 @@ debug_at_pression_send=True
 
 
 use_print_log=True
-
+list_native_window_id = []
 
 player_index_to_window_index ={}
 
@@ -396,6 +397,8 @@ def check_and_copy(message):
 def push_to_all_integer(int_value):
     for key in player_index_to_window_index:
         push_to_index_integer(key,int_value )
+    for key in list_native_window_id:
+        push_to_index_integer(key,int_value )
 
 def push_test(window, press, key_id):
     global debug_at_pression_send
@@ -417,8 +420,11 @@ def push_test(window, press, key_id):
 
 def push_to_index_integer(int_index, int_value):
     global keyboard_mappings
+    
+    if int_index<0:
+        int_index*=-1
     #print("start")
-    #print(f"R | Index {int_index}| Value {int_value}")
+    print(f"R | Index {int_index}| Value {int_value}")
     key_name_last_found=""
     press_last_found=False
     one_found=False
@@ -466,7 +472,14 @@ def push_to_index_integer(int_index, int_value):
                             
                         if key_info[2]:
                             push_test(all_found_windows_at_start[window_index], False, key_info[0].decimal)
-                            
+            
+        for window in all_found_windows_at_start:
+            if int_index == window._hWnd:
+                if key_info[1]:
+                    push_test(window, True, key_info[0].decimal)
+                    
+                if key_info[2]:
+                    push_test(window, False, key_info[0].decimal)
                
                             
         #if(one_found):
@@ -512,35 +525,25 @@ async def async_task():
                 #print("received message:", data)  
                 print(f"R| {len(data)} | {data}")
                 if byte_counter == 4:
-                    int_value = int.from_bytes(data, byteorder='little')
+                    int_value = struct.unpack("<i", data)[0]
                     if use_print_log:
-                        print(f"Value {int_value} ")
+                        print(f"Value {int_value}")
                     push_to_all_integer(int_value)
-                if byte_counter == 8:
-                    int_index = int.from_bytes(data[0:4], byteorder='little')
-                    int_value = int.from_bytes(data[4:8], byteorder='little')
+                elif byte_counter == 8:
+                    int_index, int_value = struct.unpack("<ii", data)
                     if use_print_log:
                         print(f"Index {int_index} | Value {int_value}")
                     push_to_index_integer(int_index, int_value)
-                    
-                elif  byte_counter==12:
-
-                    int_value= int.from_bytes(data[0:4], byteorder='little')
-                    long_data_2= int.from_bytes(data[4:12], byteorder='little')
+                elif byte_counter == 12:
+                    int_value, long_data_2 = struct.unpack("<iQ", data)
                     push_to_all_integer(int_value)
                     if use_print_log:
-                        print("Value ",int_value)
-                        
-                elif  byte_counter==16:
-
-                    int_index= int.from_bytes(data[0:4], byteorder='little')
-                    int_value= int.from_bytes(data[4:8], byteorder='little')
-                    long_data_2= int.from_bytes(data[8:16], byteorder='little')
-                    if use_print_log :
-                        print("Index ",int_index,"Value",int_value)
+                        print("Value", int_value)
+                elif byte_counter == 16:
+                    int_index, int_value, long_data_2 = struct.unpack("<iiQ", data)
+                    if use_print_log:
+                        print("Index", int_index, "Value", int_value)
                     push_to_index_integer(int_index, int_value)
-                    # thread = threading.Thread(target=push_to_index_integer, args=(int_index, int_value))
-                    # thread.start()
 
 
 
