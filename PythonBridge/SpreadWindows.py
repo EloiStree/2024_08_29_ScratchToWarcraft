@@ -58,6 +58,10 @@ elif len(hwnd_list) <= 9:
 else:
     columns = 4
 
+if len(hwnd_list) ==6:
+    columns = 3
+
+
 # Calculate number of rows dynamically based on the total number of windows and columns
 rows = (gamecount + columns - 1) // columns  # Calculate the number of rows needed
 
