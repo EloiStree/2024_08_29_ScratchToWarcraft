@@ -14,8 +14,8 @@ def send_udp_message(ip, port, int1, int2):
 if __name__ == "__main__":
     ip = "127.0.0.1"
     port = 7073
-    jump_start = 1032
-    jump_stop = 2032
+    jump_start = 1088
+    jump_stop = 2088
     time_between_jumps = 30
 
 while True:
