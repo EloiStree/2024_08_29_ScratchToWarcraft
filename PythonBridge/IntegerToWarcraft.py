@@ -107,6 +107,7 @@ int2clipboard = {
     "800314": "3.1418", "8001": "/dance",
 }
 
+test_int_to_ctrl_v =800000
 # fetch all .int2clipboard in the Config folder
 
 
@@ -569,6 +570,8 @@ def push_test(window, press, key_id):
             if debug_at_pression_send:
                 print(f"Release {key_id} to {window.title}")
             send_key_release(window._hWnd, key_id)
+
+       
             
 
 
@@ -600,6 +603,22 @@ def push_to_index_integer(int_index, int_value):
                             h = all_found_windows_at_start[window_index]._hWnd
                             if int_value==focus_window_key_on:
                                 click_in_middle(h)
+                            if int_index == window_index:
+                                if test_int_to_ctrl_v == int_value:
+                                    print(f"Ctrl V tooooooo {h}")
+                                    send_key_press(h, VK_CONTROL)
+                                    time.sleep(0.001)  # Add a small delay to ensure proper key press simulation
+                                    send_key_press(h, VK_V)
+                                    time.sleep(0.001)  # Add a small delay to ensure proper key press simulation
+                                    send_key_release(h, VK_V)
+                                    time.sleep(0.001)  # Add a small delay to ensure proper key press simulation
+                                    send_key_release(h, VK_CONTROL)
+                                    time.sleep(0.1)  
+                                    for i in range(2):
+                                        send_key_press(h, VK_BACKSPACE)
+                                        time.sleep(0.001)
+                                        send_key_release(h, VK_BACKSPACE)
+                                        time.sleep(0.001)
                         
     else:
         
@@ -619,14 +638,15 @@ def push_to_index_integer(int_index, int_value):
                         ## If the value is existing in the mapping allows to player
                         int_value_as_string = str(int_value)
                         
-                        print (f"{int_value}  {key_info[1]}   {key_info[2]}")
-                        
-                        if key_info[1]:
-                            push_test(all_found_windows_at_start[window_index], True, key_info[0].decimal)
-                            
-                        if key_info[2]:
-                            push_test(all_found_windows_at_start[window_index], False, key_info[0].decimal)
-            
+                        if int_index == window_index:
+                            print (f"{int_value}  {key_info[1]}   {key_info[2]}")
+                            print (f"Pushhhh {int_value} to Window {int_index} ({key_info[0].name} / {key_info[0].hexadecimal})")
+                            if key_info[1]:
+                                push_test(all_found_windows_at_start[window_index], True, key_info[0].decimal)
+                                
+                            if key_info[2]:
+                                push_test(all_found_windows_at_start[window_index], False, key_info[0].decimal)
+                
         for window in all_found_windows_at_start:
             if int_index == window._hWnd:
                 if key_info[1]:
