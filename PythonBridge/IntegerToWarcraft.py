@@ -1,4 +1,4 @@
-# pip install pyperclip psutil pygetwindow
+# pip install pyperclip psutil pygetwindow websockets  pywin32 win32gui
 
 import ctypes
 import time
