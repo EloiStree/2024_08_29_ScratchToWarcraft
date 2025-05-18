@@ -323,7 +323,7 @@ def release_key(hexKeyCode):
 
 
 def set_clipboard_if_integer_found(int_value:int):
-    print (f"Set clipboard if integer found: {int_value}")
+    #print (f"Set clipboard if integer found: {int_value}")
     global int2clipboard
     string_int_value = str(int_value)
     try:
@@ -623,29 +623,32 @@ def push_to_index_integer(int_index, int_value):
     else:
         
     
-        print(f"Push {int_value} to Window {int_index} ({key_info[0].name} / {key_info[0].hexadecimal})")
-        print(f"Push {key_info[0]}")
+        print(f"A Push {int_value} to Window {int_index} ({key_info[0].name} / {key_info[0].hexadecimal})")
+        print(f"B Push {key_info[0]}")
 
         ## Is player index existing in register
         if( int_index in player_index_to_window_index):
+            print(f"C Push {int_value} to Window {int_index} ({key_info[0].name} / {key_info[0].hexadecimal})")
             ## Get the list of window index for this player to broadcast
             window_index_list = player_index_to_window_index[int_index]
             ## For each window index to broadcast
             for window_index in window_index_list:
+                print(f"D Push {int_value} to Window {int_index} ({key_info[0].name} / {key_info[0].hexadecimal})")
                 ## If the window index in range of existing one at start
                 if window_index < len(all_found_windows_at_start):
+                        print(f"E Push {int_value} to Window {int_index} ({key_info[0].name} / {key_info[0].hexadecimal})")
                         h = all_found_windows_at_start[window_index]._hWnd
                         ## If the value is existing in the mapping allows to player
                         int_value_as_string = str(int_value)
                         
-                        if int_index == window_index:
-                            print (f"{int_value}  {key_info[1]}   {key_info[2]}")
-                            print (f"Pushhhh {int_value} to Window {int_index} ({key_info[0].name} / {key_info[0].hexadecimal})")
-                            if key_info[1]:
-                                push_test(all_found_windows_at_start[window_index], True, key_info[0].decimal)
-                                
-                            if key_info[2]:
-                                push_test(all_found_windows_at_start[window_index], False, key_info[0].decimal)
+                        print (f"EC Push {int_value} vs {window_index}")
+                        # if int_index == window_index:
+                        print (f"{int_value}  {key_info[1]}   {key_info[2]}")
+                        if key_info[1]:
+                            push_test(all_found_windows_at_start[window_index], True, key_info[0].decimal)
+                            
+                        if key_info[2]:
+                            push_test(all_found_windows_at_start[window_index], False, key_info[0].decimal)
                 
         for window in all_found_windows_at_start:
             if int_index == window._hWnd:
