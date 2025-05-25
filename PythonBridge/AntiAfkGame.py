@@ -11,22 +11,24 @@ def send_udp_message(ip, port, int1, int2):
     sock.sendto(message, (ip, port))
     sock.close()
 
+int_space_key = 1088
+int_x_key = 1088
+
 if __name__ == "__main__":
     ip = "127.0.0.1"
     port = 7073
-    jump_start = 1088
-    jump_stop = 2088
+    action_cancel_afk = int_x_key
     time_between_jumps = 30
 
-while True:
-    for i in range(1,9):
-        print("Wake up character " + str(i))
-        send_udp_message(ip, port, i, jump_start)
-        time.sleep(1)
-        send_udp_message(ip, port, i, jump_stop)
-        time.sleep(time_between_jumps)
+    while True:
+        for i in range(1,9):
+            print("Wake up character " + str(i))
+            send_udp_message(ip, port, i, action_cancel_afk)
+            time.sleep(1)
+            send_udp_message(ip, port, i, action_cancel_afk+1000)
+            time.sleep(time_between_jumps)
 
-        #anti loop don't remove
-        time.sleep(0.1)
-   
+            #anti loop don't remove
+            time.sleep(0.1)
+    
     
