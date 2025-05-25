@@ -1,6 +1,7 @@
-# pip install pyperclip psutil pygetwindow
+# pip install pyperclip psutil pygetwindow websockets  pywin32 win32gui
 
 import ctypes
+import os
 import struct
 import time
 import socket
@@ -21,12 +22,13 @@ lisent_udp_port_to_interact = 7073
 window_title = "World of Warcraft"
 
 
-# get parameter
 
 if len(sys.argv) > 1:
     window_title = sys.argv[1]
 if len(sys.argv) > 2:
     lisent_udp_port_to_interact = int(sys.argv[2])
+
+
 
 debug_at_pression_send=True
 
@@ -65,14 +67,6 @@ focus_window_key_off= focus_window_key_on+1000
 
 
 
-
-
-
-
-
-
-
-
 def get_local_ips():
     local_ips = []
     for interface, snics in psutil.net_if_addrs().items():
@@ -87,12 +81,8 @@ print(f"Local IPs: {local_ips}")
 
 
 
-
-
-
-
-
-
+        
+        
 
 
 user32 = ctypes.windll.user32
@@ -111,6 +101,67 @@ target_window_index = 0
 
 
 
+int2clipboard = {
+    "800042": "Je suis le sens de la vie, de l'univers et de tout",
+    "802501": "Je suis une reference a Ghost in the shell",
+    "800314": "3.1418", "8001": "/dance",
+}
+
+test_int_to_ctrl_v =800000
+# fetch all .int2clipboard in the Config folder
+
+
+print("Loading int2clipboard and int2clipboardline files")
+relative_path = "Config"
+near_python_absolute_path = os.path.dirname(os.path.abspath(__file__))
+absolute_path = os.path.join(near_python_absolute_path, relative_path)
+
+bool_debug_clipboard_loaded = False
+if not os.path.exists(absolute_path):
+    os.makedirs(absolute_path)
+try:
+    for filename in os.listdir(absolute_path):
+        if filename.endswith(".int2clipboard"):
+            try:
+                with open(os.path.join(absolute_path, filename), "r") as file:
+                    content = file.read()
+                    key = filename[:-14]
+                    value = content.strip()
+                    int2clipboard[key] = value
+                    if bool_debug_clipboard_loaded: 
+                        print(f"Key: {key} | Value: {value}")
+            except Exception as e:
+                print(f"Error reading file {filename}: {e}")
+
+    # .int2clipboardline  
+    for filename in os.listdir(absolute_path):
+        if filename.endswith(".int2clipboardline"):
+            try:
+                with open(os.path.join(absolute_path, filename), "r") as file:
+                    content = file.read()
+                    for line in content.splitlines():
+                        if line.strip():
+                            try:
+                                index = line.index(":")
+                                key = line[:index].strip()
+                                value = line[index + 1:].strip()
+                                int2clipboard[key] = value
+                                if bool_debug_clipboard_loaded:
+                                    print(f"Key: {key} | Value: {value}")
+                            except ValueError:
+                                print(f"Invalid line format in file {filename}: {line}")
+            except Exception as e:
+                print(f"Error reading file {filename}: {e}")
+except Exception as e:
+    print(f"Error processing files in {absolute_path}: {e}")
+
+
+int_ctrl_x = 4001 # will change later
+int_ctrl_c = 4002 # will change later
+int_ctrl_v = 4003 # will change later
+# int_ctrl_enter_ctrl_v_backspace = 4004
+# int_ctrl_wow_ctrl_v_backspace = 4005
+
 
 
 
@@ -124,6 +175,35 @@ target_window_index = 0
 # Constants for SendMessage
 WM_KEYDOWN = 0x0100
 WM_KEYUP = 0x0101
+VK_CONTROL = 0x11
+VK_V = 0x56
+VK_X = 0x58
+VK_C = 0x43
+VK_BACKSPACE = 0x08
+VK_OPEN_CHAT_ENTER = 0x0D
+# Change this one to the one you want to use
+VK_OPEN_CHAT_TARGET = 0x0D 
+
+
+
+# def ctrl_x(hwnd):
+#     send_key_press(hwnd, VK_CONTROL)
+#     send_key_press(hwnd, VK_X)
+#     send_key_release(hwnd, VK_X)
+#     send_key_release(hwnd, VK_CONTROL)
+
+# def ctrl_c(hwnd):
+#     send_key_press(hwnd, VK_CONTROL)
+#     send_key_press(hwnd, VK_C)
+#     send_key_release(hwnd, VK_C)
+#     send_key_release(hwnd, VK_CONTROL)
+
+# def ctrl_v(hwnd):
+#     send_key_press(hwnd, VK_CONTROL)
+#     send_key_press(hwnd, VK_V)
+#     send_key_release(hwnd, VK_V)
+#     send_key_release(hwnd, VK_CONTROL)
+
 
 
 
@@ -161,7 +241,6 @@ def find_in_all_count(title):
         return len(list_window_found)
     else:
         return 0
-
 
 
 
@@ -243,6 +322,21 @@ def release_key(hexKeyCode):
 
 
 
+def set_clipboard_if_integer_found(int_value:int):
+    #print (f"Set clipboard if integer found: {int_value}")
+    global int2clipboard
+    string_int_value = str(int_value)
+    try:
+        if string_int_value in int2clipboard:
+            content = int2clipboard[string_int_value]
+            
+            print (f"Clip: {int_value} to {content}  ")
+            pyperclip.copy(content)
+            if use_print_log:
+                print("Content copied to clipboard:", content)
+            return True
+    except Exception as e:
+        print("Error while setting clipboard:", e)
 
 
 
@@ -381,6 +475,67 @@ def send_key_release(hwnd, key_code):
 
 
 
+
+
+def for_the_test_to_all(int_unicode_code:int):
+    # DONT WORK BECAUES IT IS LINKED TO WINDOWS AND NOT THE GAME
+    # SHOULD WORK WITH AUTOGUI IF ONE GAME ONLY OR USE OF FOCUS WINDOW
+    # BUT IT IS TOO MUCH POWER TO GIVE A TWITCH PLAY THE ABILITY TO USE THAT xD
+    for window in all_found_windows_at_start:
+        if window:
+            for_the_test(window._hWnd, int_unicode_code)
+
+def for_the_test(hwnd, int_unicode_code:int):
+    vk_leftalt = 0xA4
+    vk_numpad0 = 0x60
+    vk_numpad1 = 0x61
+    vk_numpad2 = 0x62
+    vk_numpad3 = 0x63
+    vk_numpad4 = 0x64
+    vk_numpad5 = 0x65
+    vk_numpad6 = 0x66
+    vk_numpad7 = 0x67
+    vk_numpad8 = 0x68
+    vk_numpad9 = 0x69
+    send_key_release(hwnd, vk_leftalt)
+    time.sleep(0.4)
+    string_code = str(int_unicode_code)
+    for i in range(len(string_code)):
+        time.sleep(0.4)
+        char_value = string_code[i]
+        if char_value == "0":
+            hex_value = vk_numpad0
+        elif char_value == "1":
+            hex_value = vk_numpad1
+        elif char_value == "2":
+            hex_value = vk_numpad2
+        elif char_value == "3":
+            hex_value = vk_numpad3
+        elif char_value == "4":
+            hex_value = vk_numpad4
+        elif char_value == "5":
+            hex_value = vk_numpad5
+        elif char_value == "6":
+            hex_value = vk_numpad6
+        elif char_value == "7":
+            hex_value = vk_numpad7
+        elif char_value == "8":
+            hex_value = vk_numpad8
+        elif char_value == "9":
+            hex_value = vk_numpad9
+       
+
+
+        send_key_press(hwnd, hex_value)
+        send_key_release(hwnd, hex_value) 
+
+        send_key_press(hwnd, VK_BACKSPACE)
+        send_key_release(hwnd, VK_BACKSPACE)
+    
+    send_key_release(hwnd, vk_leftalt)
+
+
+
 def check_and_copy(message):
     if message.startswith("c "):
         content = message[2:]  # Extract the content after "c "
@@ -415,6 +570,8 @@ def push_test(window, press, key_id):
             if debug_at_pression_send:
                 print(f"Release {key_id} to {window.title}")
             send_key_release(window._hWnd, key_id)
+
+       
             
 
 
@@ -446,33 +603,53 @@ def push_to_index_integer(int_index, int_value):
                             h = all_found_windows_at_start[window_index]._hWnd
                             if int_value==focus_window_key_on:
                                 click_in_middle(h)
+                            if int_index == window_index:
+                                if test_int_to_ctrl_v == int_value:
+                                    print(f"Ctrl V tooooooo {h}")
+                                    send_key_press(h, VK_CONTROL)
+                                    time.sleep(0.001)  # Add a small delay to ensure proper key press simulation
+                                    send_key_press(h, VK_V)
+                                    time.sleep(0.001)  # Add a small delay to ensure proper key press simulation
+                                    send_key_release(h, VK_V)
+                                    time.sleep(0.001)  # Add a small delay to ensure proper key press simulation
+                                    send_key_release(h, VK_CONTROL)
+                                    time.sleep(0.1)  
+                                    for i in range(2):
+                                        send_key_press(h, VK_BACKSPACE)
+                                        time.sleep(0.001)
+                                        send_key_release(h, VK_BACKSPACE)
+                                        time.sleep(0.001)
                         
     else:
         
     
-        print(f"Push {int_value} to Window {int_index} ({key_info[0].name} / {key_info[0].hexadecimal})")
-        print(f"Push {key_info[0]}")
+        print(f"A Push {int_value} to Window {int_index} ({key_info[0].name} / {key_info[0].hexadecimal})")
+        print(f"B Push {key_info[0]}")
 
         ## Is player index existing in register
         if( int_index in player_index_to_window_index):
+            print(f"C Push {int_value} to Window {int_index} ({key_info[0].name} / {key_info[0].hexadecimal})")
             ## Get the list of window index for this player to broadcast
             window_index_list = player_index_to_window_index[int_index]
             ## For each window index to broadcast
             for window_index in window_index_list:
+                print(f"D Push {int_value} to Window {int_index} ({key_info[0].name} / {key_info[0].hexadecimal})")
                 ## If the window index in range of existing one at start
                 if window_index < len(all_found_windows_at_start):
+                        print(f"E Push {int_value} to Window {int_index} ({key_info[0].name} / {key_info[0].hexadecimal})")
                         h = all_found_windows_at_start[window_index]._hWnd
                         ## If the value is existing in the mapping allows to player
                         int_value_as_string = str(int_value)
                         
+                        print (f"EC Push {int_value} vs {window_index}")
+                        # if int_index == window_index:
                         print (f"{int_value}  {key_info[1]}   {key_info[2]}")
-                        
                         if key_info[1]:
                             push_test(all_found_windows_at_start[window_index], True, key_info[0].decimal)
                             
                         if key_info[2]:
                             push_test(all_found_windows_at_start[window_index], False, key_info[0].decimal)
-            
+                
         for window in all_found_windows_at_start:
             if int_index == window._hWnd:
                 if key_info[1]:
@@ -521,6 +698,8 @@ async def async_task():
             while True:
                 data, addr = sock.recvfrom(1024)  
                 
+                int_value_found=False
+                int_value = 0
                 byte_counter = len(data)
                 #print("received message:", data)  
                 print(f"R| {len(data)} | {data}")
@@ -528,23 +707,29 @@ async def async_task():
                     int_value = struct.unpack("<i", data)[0]
                     if use_print_log:
                         print(f"Value {int_value}")
+                    int_value_found= True
                     push_to_all_integer(int_value)
                 elif byte_counter == 8:
                     int_index, int_value = struct.unpack("<ii", data)
                     if use_print_log:
                         print(f"Index {int_index} | Value {int_value}")
+                    int_value_found= True
                     push_to_index_integer(int_index, int_value)
                 elif byte_counter == 12:
                     int_value, long_data_2 = struct.unpack("<iQ", data)
                     push_to_all_integer(int_value)
+                    int_value_found= True
                     if use_print_log:
                         print("Value", int_value)
                 elif byte_counter == 16:
                     int_index, int_value, long_data_2 = struct.unpack("<iiQ", data)
+                    int_value_found= True
                     if use_print_log:
                         print("Index", int_index, "Value", int_value)
                     push_to_index_integer(int_index, int_value)
 
+                if int_value_found:
+                    set_clipboard_if_integer_found(int_value)
 
 
            
