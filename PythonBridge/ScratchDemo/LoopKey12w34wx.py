@@ -33,13 +33,24 @@ def send_action_and_wait_time(int_value,t):
         send_index_integer_command(i, int_value+1000)
 
 jump =0
+
+"""
+/targetexact Lindel the Snatcher
+/targetexact Silent Boris
+
+
+"""
+send_action_and_wait_time(1088,1.9)
+time.sleep(0.1)
 while True:
         jump+=1
         send_action_and_wait_time(1049,1.9)
         time.sleep(0.1)
         send_action_and_wait_time(1050,0.5)
-        time.sleep(0.1)
+        time.sleep(1.6)
         send_action_and_wait_time(1051,0.1)
+        time.sleep(0.1)
+        send_action_and_wait_time(1052,0.1)
         
         time.sleep(0.1)
         if jump%60==0:
