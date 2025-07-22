@@ -37,25 +37,19 @@ while True:
         jump+=1
         send_action_and_wait_time(1049,0.1)
         time.sleep(0.1)
-        send_action_and_wait_time(1050,0.8)
+        send_action_and_wait_time(1050,2.9)
         time.sleep(0.1)
-        send_action_and_wait_time(1051,0.8)
+        send_action_and_wait_time(1051,1.5)
         time.sleep(0.1)
-        send_action_and_wait_time(1052,0.8)
+        send_action_and_wait_time(1052,1.5)
         time.sleep(0.1)
-        send_action_and_wait_time(1053,0.8)
+        send_action_and_wait_time(1053,2.9)
         time.sleep(0.1)
-        send_action_and_wait_time(1054,0.8)
+        send_action_and_wait_time(1054,1.5)
         time.sleep(0.1)
-        send_action_and_wait_time(1055,0.1)
-        send_action_and_wait_time(1088,0.8)
+        send_action_and_wait_time(1055,1.5)
+        if jump%60==0: 
+	        send_action_and_wait_time(1088,0.8)
         
-        time.sleep(0.1)
-        
-        
-
-        
-    
-       
 
 
