@@ -1,6 +1,6 @@
 # Scratch To Warcraft
 
-Lean code by playing games like Warcraft 1,2,3 and World of Warcraft 😁.  
+Learn code by playing games like Warcraft 1,2,3 and World of Warcraft 😁.  
 Also a bit of 10 Second Ninja.  
 
 You will need [python](https://www.python.org), and those module for Window:
