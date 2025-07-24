@@ -1,4 +1,4 @@
-# 2024_08_29_ScratchToWarcraft
+# Scratch To Warcraft
 
 Lean code by playing games like Warcraft 1,2,3 and World of Warcraft 😁.  
 Also a bit of 10 Second Ninja.  
