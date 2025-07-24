@@ -5,7 +5,7 @@ Also a bit of 10 Second Ninja.
 
 You will need [python](https://www.python.org), and those module for Window:
 ```
-pip install pyperclip psutil pygetwindow websockets pywin32
+pip install pyperclip psutil pygetwindow websockets pywin32 PyAutoGUI
 ```
 
 -----------
