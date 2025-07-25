@@ -1,6 +1,12 @@
-# 2024_08_29_ScratchToWarcraft
-Apprendre la programmation par warcraft via Scratch 😁
+# Scratch To Warcraft
 
+Learn code by playing games like Warcraft 1,2,3 and World of Warcraft 😁.  
+Also a bit of 10 Second Ninja.  
+
+You will need [python](https://www.python.org), and those module for Window:
+```
+pip install pyperclip psutil pygetwindow websockets pywin32 PyAutoGUI pynput
+```
 
 -----------
 
