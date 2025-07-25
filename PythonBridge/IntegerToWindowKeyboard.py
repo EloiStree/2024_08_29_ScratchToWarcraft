@@ -18,7 +18,7 @@ import pyautogui
 import win32api
 import win32con
 
-lisent_udp_port_to_interact = 7074
+lisent_udp_port_to_interact = 7073
 debug_at_pression_send=True
 use_print_log=True
 use_print_log=False
