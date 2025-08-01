@@ -30,7 +30,7 @@ key_enter = 1013
 use_key_tab = False
 use_key_enter = False
 use_key_space = False
-use_key_alpha = True
+use_key_alpha = False
 
 
 time_between_key_test =1
