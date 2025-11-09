@@ -1,6 +1,12 @@
-# 2024_08_29_ScratchToWarcraft
-Apprendre la programmation par warcraft via Scratch 😁
+# Scratch To Warcraft
 
+Learn code by playing games like Warcraft 1,2,3 and World of Warcraft 😁.  
+Also a bit of 10 Second Ninja.  
+
+You will need [python](https://www.python.org), and those module for Window:
+```
+pip install pyperclip psutil pygetwindow websockets pywin32 PyAutoGUI pynput
+```
 
 -----------
 
@@ -18,6 +24,7 @@ Tamper Monkey code: https://github.com/EloiStree/2024_08_29_ScratchToWarcraft/bl
 - Version Unity3D UDP: https://github.com/EloiStree/2024_11_16_WowIntegerWorkshopUnity3D
 - Version Pico W: https://github.com/EloiStree/2024_11_16_WowIntWorkshopPicoW
 - Version Python: https://github.com/EloiStree/2024_06_12_WowIntegerWorkshopPython
+- Version Godot: https://github.com/EloiStree/2025_11_11_WowIntegerWorkshopGodotScript
 
 ## Guide d'installation
 [![image](https://github.com/user-attachments/assets/6187d039-14d4-4fcb-896f-84e08392761a)](https://youtu.be/X0UA4ckn2ws)  
