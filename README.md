@@ -734,3 +734,28 @@ Allows to export line of color for Led and Color Picking context.
 ...
 02 99 R G B Color Picking 99
 ```
+
+## Full Midi
+
+**Explanation of MIDI Format Tags**
+
+MIDI data is stored using 3 bytes, but I use 4-byte tags to make it more recognizable.  
+
+Tagging an event with **13** indicates that the following data is in MIDI format:  
+`1300000000`
+
+For simplicity, here’s a beginner-friendly reference using values 0–127 in the tag system:
+
+- **1600** – Play full note 0 | **2600** – Release note 0  
+- **1727** – Play full note 127 | **2727** – Release note 127  
+- **1728** – Press all notes | **2728** – Release all notes  
+
+---
+
+In tribute to *Mordhau*:
+
+- **1729** – Switch to Flute | **2729** – Switch to Muse  
+- **1730** – Play note 0  
+- **1790** – Play note 60  
+
+*Note: Mordhau mode does not use note releases.*
