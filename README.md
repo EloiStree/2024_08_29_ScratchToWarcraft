@@ -759,3 +759,71 @@ In tribute to *Mordhau*:
 - **1790** – Play note 60  
 
 *Note: Mordhau mode does not use note releases.*
+
+
+----------------
+
+
+
+## Gamepad XInput Buttons as Binary
+
+To reduce bandwidth usage, you can transmit the “held state” of the gamepad instead of sending constant updates.
+
+* **`1800000000`** is used for the full gamepad data (including both joysticks).
+* **`1700000000`** is used for all remaining button and trigger data.
+
+Triggers usually don’t require high-precision values in games. Using discrete levels **0, 0.25, 0.5, 0.75, and 1.0** is typically sufficient, which is why I encode them using the **binary tag 17**.
+
+Below is an older code snippet showing how the `1700000000` binary structure is decoded:
+
+``` cpp
+
+    static bool is_integer_bit_right_to_left_true(int value, int index){
+      //Don't forget to remove the tag (like 1700000000)
+      return (value & (1 << index)) ? true: false;
+    }
+```
+
+
+```cpp
+// if(useDebugPrint){
+//     Serial.print(" A:");   Serial.print(isIntegerBitRightToLeftTrue(value, 0));
+//     Serial.print(" X:");   Serial.print(isIntegerBitRightToLeftTrue(value, 1));
+//     Serial.print(" B:");   Serial.print(isIntegerBitRightToLeftTrue(value, 2));
+//     Serial.print(" Y:");   Serial.print(isIntegerBitRightToLeftTrue(value, 3));
+//     Serial.print(" LB:");  Serial.print(isIntegerBitRightToLeftTrue(value, 4));
+//     Serial.print(" RB:");  Serial.print(isIntegerBitRightToLeftTrue(value, 5));
+//     Serial.print(" LS:");  Serial.print(isIntegerBitRightToLeftTrue(value, 6));
+//     Serial.print(" RS:");  Serial.print(isIntegerBitRightToLeftTrue(value, 7));
+//     Serial.print(" MENU:");Serial.print(isIntegerBitRightToLeftTrue(value, 8));
+//     Serial.print(" HOME:");Serial.print(isIntegerBitRightToLeftTrue(value, 9));
+//     Serial.print(" DPad N:"); Serial.print(isIntegerBitRightToLeftTrue(value, 10));
+//     Serial.print(" DPad NE:");Serial.print(isIntegerBitRightToLeftTrue(value, 11));
+//     Serial.print(" DPad E:"); Serial.print(isIntegerBitRightToLeftTrue(value, 12));
+//     Serial.print(" DPad SE:");Serial.print(isIntegerBitRightToLeftTrue(value, 13));
+//     Serial.print(" DPad S:"); Serial.print(isIntegerBitRightToLeftTrue(value, 14));
+//     Serial.print(" DPad SW:");Serial.print(isIntegerBitRightToLeftTrue(value, 15));
+//     Serial.print(" DPad W:"); Serial.print(isIntegerBitRightToLeftTrue(value, 16));
+//     Serial.print(" DPad NW:");Serial.print(isIntegerBitRightToLeftTrue(value, 17));
+
+//     Serial.print(" LT 0.25 (bit 1):"); Serial.print(isIntegerBitRightToLeftTrue(value, 18));
+//     Serial.print(" LT 0.25 (bit 2):"); Serial.print(isIntegerBitRightToLeftTrue(value, 19));
+//     Serial.print(" LT 0.5  (bit 3):"); Serial.print(isIntegerBitRightToLeftTrue(value, 20));
+//     Serial.print(" RT 0.25 (bit 1):"); Serial.print(isIntegerBitRightToLeftTrue(value, 21));
+//     Serial.print(" RT 0.25 (bit 2):"); Serial.print(isIntegerBitRightToLeftTrue(value, 22));
+//     Serial.print(" RT 0.5  (bit 3):"); Serial.print(isIntegerBitRightToLeftTrue(value, 23));
+//     Serial.println();
+// }
+```
+
+Additional notes from the old documentation:
+
+```
+1715243245
+11111111 11111111 11111111 11111111
+
+bit fields, bytes, signed bytes, floats, shorts, and packed controller states:
+BD BR BU BL  JD JR BTL BTR  ML MC MR AD AR AU AL
+jlv jlh jrv jrh tl tr
+```
+
