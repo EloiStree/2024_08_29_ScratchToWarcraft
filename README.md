@@ -425,6 +425,7 @@ _You can find the original code here: [GitHub Repository](https://github.com/Elo
 | Clear Timed Command        | 1398                 | 2398                   |
 
 
+
 # GPIO on Raspberry Pi  
 
 Enables setting the GPIO to HIGH or LOW, provided the developer has the necessary permissions. Dev 0-40 refers to a list defined by the developer, specifying writable pins that can be used without explicitly identifying each pin.
@@ -967,4 +968,12 @@ Example for Arduino Receiver (need to be verified, Draft)
           }
       }
 ```
+
+
+# Ping Pong
+
+You need to find your device on the network, depending of if you use Websocket or UDP.
+Int 3123  Send back on port 3123 text:  IPV4|DeviceName|UniqueID  
+
+
 
