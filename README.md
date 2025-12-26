@@ -425,6 +425,7 @@ _You can find the original code here: [GitHub Repository](https://github.com/Elo
 | Clear Timed Command        | 1398                 | 2398                   |
 
 
+
 # GPIO on Raspberry Pi  
 
 Enables setting the GPIO to HIGH or LOW, provided the developer has the necessary permissions. Dev 0-40 refers to a list defined by the developer, specifying writable pins that can be used without explicitly identifying each pin.
@@ -734,3 +735,245 @@ Allows to export line of color for Led and Color Picking context.
 ...
 02 99 R G B Color Picking 99
 ```
+
+## Full Midi
+
+**Explanation of MIDI Format Tags**
+
+MIDI data is stored using 3 bytes, but I use 4-byte tags to make it more recognizable.  
+
+Tagging an event with **13** indicates that the following data is in MIDI format:  
+`1300000000`
+
+For simplicity, here’s a beginner-friendly reference using values 0–127 in the tag system:
+
+- **1600** – Play full note 0 | **2600** – Release note 0  
+- **1727** – Play full note 127 | **2727** – Release note 127  
+- **1728** – Press all notes | **2728** – Release all notes  
+
+---
+
+In tribute to *Mordhau*:
+
+- **1729** – Switch to Flute | **2729** – Switch to Muse  
+- **1730** – Play note 0  
+- **1790** – Play note 60  
+
+*Note: Mordhau mode does not use note releases.*
+
+
+----------------
+
+
+
+## Gamepad XInput Buttons as Binary
+
+To reduce bandwidth usage, you can transmit the “held state” of the gamepad instead of sending constant updates.
+
+* **`1800000000`** is used for the full gamepad data (including both joysticks).
+* **`1700000000`** is used for all remaining button and trigger data.
+
+Triggers usually don’t require high-precision values in games. Using discrete levels **0, 0.25, 0.5, 0.75, and 1.0** is typically sufficient, which is why I encode them using the **binary tag 17**.
+
+Below is an older code snippet showing how the `1700000000` binary structure is decoded:
+
+
+( !!! I change the standard and did  not change yet the Generic of Unity3D !!!  
+https://github.com/EloiStree/OpenUPM_PushGenericIID )  
+
+Example for Godot Push (need to be verified, Draft)
+```
+static func gamepad_resource_to_1700000000_integer(gamepad: S2W_Data_Gamepad1817) -> int:
+		var result: int = 0
+		
+		# Set button bits
+		if gamepad.button_y_up:
+			result |= (1 << 0)
+		if gamepad.button_b_right:
+			result |= (1 << 1)
+		if gamepad.button_a_down:
+			result |= (1 << 2)
+		if gamepad.button_x_left:
+			result |= (1 << 3)
+
+		if gamepad.arrow_up:
+			result |= (1 << 4)
+		if gamepad.arrow_right:
+			result |= (1 << 5)
+		if gamepad.arrow_down:
+			result |= (1 << 6)
+		if gamepad.arrow_left:
+			result |= (1 << 7)
+
+		if gamepad.side_button_left:
+			result |= (1 << 8)
+		if gamepad.side_button_right:
+			result |= (1 << 9)
+			
+		if gamepad.stick_joystick_left:
+			result |= (1 << 10)
+		if gamepad.stick_joystick_right:
+			result |= (1 << 11)
+
+		if gamepad.menu_left:
+			result |= (1 << 12)
+		if gamepad.menu_center:
+			result |= (1 << 13)
+		if gamepad.menu_right:
+			result |= (1 << 14)
+		if gamepad.kill_switch_is_connected:
+			result |= (1 << 15)
+		
+
+		#binary order
+		#0.10  16 20
+		#0.15  17 21
+		#0.25  18 22
+		#0.50  19 23
+
+		var tl = gamepad.trigger_left_axis_01_percent
+		if tl > 0.99:
+			result |= (1 << 16)
+			result |= (1 << 17)
+			result |= (1 << 18)
+			result |= (1 << 19)
+		if tl > 0.74:
+			result |= (1 << 18)
+			result |= (1 << 19)
+		elif tl > 0.49:
+			result |= (1 << 19)
+		elif tl > 0.24:
+			result |= (1 << 18)
+		elif tl > 0.14:
+			result |= (1 << 17)
+		elif tl > 0.9:
+			result |= (1 << 16)
+		
+		var tr = gamepad.trigger_right_axis_01_percent
+		if tr > 0.99:
+			result |= (1 << 20)
+			result |= (1 << 21)
+			result |= (1 << 22)
+			result |= (1 << 23)
+		if tr > 0.74:
+			result |= (1 << 22)
+			result |= (1 << 23)
+		elif tr > 0.49:
+			result |= (1 << 23)
+		elif tr > 0.24:
+			result |= (1 << 22)
+		elif tr > 0.14:
+			result |= (1 << 21)
+		elif tr > 0.9:
+			result |= (1 << 20)
+
+		return result + 1700000000
+```
+
+
+Example for Arduino Receiver (need to be verified, Draft)
+``` cpp
+
+    else if(value>=1800000000 && value<=1899999999){
+
+      //18 50 20 00 10
+      //1850200010
+      //4 bytes because integer
+      int left_horizontal_from_1_to_99 =   (value/1000000)%100;
+      int left_vertical_from_1_to_99 =     (value/10000)%100;
+      int right_horizontal_from_1_to_99 =  (value/100)%100;
+      int right_vertical_from_1_to_99 =    (value/1)%100;
+      float left_horizontal_percent= IntAndBinaryUtility::turn_from_1_to_99_as_percent(left_horizontal_from_1_to_99);
+      float left_vertical_percent= IntAndBinaryUtility::turn_from_1_to_99_as_percent(left_vertical_from_1_to_99);
+      float right_horizontal_percent= IntAndBinaryUtility::turn_from_1_to_99_as_percent(right_horizontal_from_1_to_99);
+      float right_vertical_percent= IntAndBinaryUtility::turn_from_1_to_99_as_percent(right_vertical_from_1_to_99);
+      gamepad()->set_left_horizontal_percent(left_horizontal_percent);
+      gamepad()->set_left_vertical_percent(left_vertical_percent);
+      gamepad()->set_right_horizontal_percent(right_horizontal_percent);
+      gamepad()->set_right_vertical_percent(right_vertical_percent );
+    }
+    else if(value>=1700000000 && value<=1799999999){
+            m_binaryBufferOfInteger[33]; // Buffer to store the binary representation (32 bits + null terminator)
+            //IntAndBinaryUtility::int_to_binary_buffer(value, m_binaryBufferOfInteger, 33);
+            //Serial.println(m_binaryBufferOfInteger);
+            value=value-1700000000;
+            IntAndBinaryUtility::int_to_binary_buffer(value,m_binaryBufferOfInteger,33);
+            //Serial.println(m_binaryBufferOfInteger);
+
+
+            float triggerLeft=0.0;
+            float triggerRight=0.0;
+            float arrowHorizontal=0;
+            float arrowVertical =0;
+            if(IntAndBinaryUtility::is_integer_bit_right_to_left_true (value, 0)) gamepad()->press_y(true); else gamepad()->press_y(false);
+            if(IntAndBinaryUtility::is_integer_bit_right_to_left_true (value, 1)) gamepad()->press_b(true); else gamepad()->press_b(false);
+            if(IntAndBinaryUtility::is_integer_bit_right_to_left_true (value, 2)) gamepad()->press_a(true); else gamepad()->press_a(false);
+            if(IntAndBinaryUtility::is_integer_bit_right_to_left_true (value, 3)) gamepad()->press_x(true); else gamepad()->press_x(false);
+
+            if(IntAndBinaryUtility::is_integer_bit_right_to_left_true (value, 4)) arrowVertical+=1; // CLOCK WISE N
+            if(IntAndBinaryUtility::is_integer_bit_right_to_left_true (value, 5)) arrowHorizontal+=1; // CLOCK WISE E
+            if(IntAndBinaryUtility::is_integer_bit_right_to_left_true (value, 6)) arrowVertical+=-1; // CLOCK WISE S
+            if(IntAndBinaryUtility::is_integer_bit_right_to_left_true (value, 7)) arrowHorizontal+=-1; //// CLOCK WISE W
+
+            if(IntAndBinaryUtility::is_integer_bit_right_to_left_true (value, 8)) gamepad()->press_left_side_button(true);            else gamepad()->press_left_side_button(false);
+            if(IntAndBinaryUtility::is_integer_bit_right_to_left_true (value, 9)) gamepad()->press_right_side_button(true);            else gamepad()->press_right_side_button(false);
+
+            if(IntAndBinaryUtility::is_integer_bit_right_to_left_true (value, 10)) gamepad()->press_left_stick(true);  else gamepad()->press_left_stick(false);
+            if(IntAndBinaryUtility::is_integer_bit_right_to_left_true (value, 11)) gamepad()->press_right_stick(true);  else gamepad()->press_right_stick(false);
+
+
+            if(IntAndBinaryUtility::is_integer_bit_right_to_left_true (value, 12)) gamepad()->press_menu_left(true);        else gamepad()->press_menu_left(false);
+            if(IntAndBinaryUtility::is_integer_bit_right_to_left_true (value, 13)) gamepad()->press_home_xbox_button(true);    else gamepad()->press_home_xbox_button(false);
+            if(IntAndBinaryUtility::is_integer_bit_right_to_left_true (value, 14)) gamepad()->press_menu_right(true);        else gamepad()->press_menu_right(false);
+            if(IntAndBinaryUtility::is_integer_bit_right_to_left_true (value, 15)) {/*KILL SWITCH ON*/}        else /*KILL SWITCH OFF*/;
+
+          //Decode trigger values from bits
+          //Left trigger: bits 16-19
+          //Right trigger: bits 20-23
+          //Pattern: 0.10 (16/20), 0.15 (17/21), 0.25 (18/22), 0.50 (19/23)          
+          //This is the decoding logic (inverse of encoding above)
+          // For reference when implementing the decode function:
+           var trigger_left = 0.0
+           var trigger_right = 0.0
+           if is_integer_bit_right_to_left_true(value, 16): trigger_left += 0.10
+           if is_integer_bit_right_to_left_true(value, 17): trigger_left += 0.15
+           if is_integer_bit_right_to_left_true(value, 18): trigger_left += 0.25
+           if is_integer_bit_right_to_left_true(value, 19): trigger_left += 0.50
+           if is_integer_bit_right_to_left_true(value, 20): trigger_right += 0.10
+           if is_integer_bit_right_to_left_true(value, 21): trigger_right += 0.15
+           if is_integer_bit_right_to_left_true(value, 22): trigger_right += 0.25
+           if is_integer_bit_right_to_left_true(value, 23): trigger_right += 0.50
+
+            gamepad()->set_trigger_left_percent(triggerLeft);
+            gamepad()->set_trigger_right_percent(triggerRight);
+
+            if(arrowVertical==1 && arrowHorizontal==0)
+                 gamepad()->press_arrow_n();
+            else if(arrowVertical==1 && arrowHorizontal==1)
+                gamepad()->press_arrow_ne();
+            else if(arrowVertical==0 && arrowHorizontal==1)
+                gamepad()->press_arrow_e();
+            else if(arrowVertical==-1 && arrowHorizontal==1)
+                gamepad()->press_arrow_se();
+            else if(arrowVertical==-1 && arrowHorizontal==0)
+                gamepad()->press_arrow_s();
+            else if(arrowVertical==-1 && arrowHorizontal==-1)
+                gamepad()->press_arrow_sw();
+            else if(arrowVertical==0 && arrowHorizontal==-1)
+                gamepad()->press_arrow_w();
+            else if(arrowVertical==1 && arrowHorizontal==-1)
+                gamepad()->press_arrow_nw();
+            else
+                gamepad()->release_dpad();
+          }
+      }
+```
+
+
+# Ping Pong
+
+You need to find your device on the network, depending of if you use Websocket or UDP.
+Int 3123  Send back on port 3123 text:  IPV4|DeviceName|UniqueID  
+
+
+
