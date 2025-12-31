@@ -977,3 +977,13 @@ Int 3123  Send back on port 3123 text:  IPV4|DeviceName|UniqueID
 
 
 
+
+
+# Compute Control
+
+You can apparently do so much more with USB... But I am not sure it would be wise in the context of this project as I am focusing on gaming here.
+- https://github.com/adafruit/Adafruit_CircuitPython_HID/blob/main/adafruit_hid/consumer_control_code.py
+  - https://www.usb.org/sites/default/files/hut1_21_0.pdf#page=118
+
+
+
