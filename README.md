@@ -240,6 +240,7 @@ If in OS context
 **1599998888**
 - 15 Mouse Move in application focus screen
   - 14 Mouse Move on OS screen
+  - 16 Move Relatively to last position
 - 9999: percent width screen 0-9999 Left Right
 - 8888: percent height screen 0-9999 Down Top
 
@@ -975,10 +976,7 @@ Example for Arduino Receiver (need to be verified, Draft)
 # Ping Pong
 
 You need to find your device on the network, depending of if you use Websocket or UDP.
-Int 3123  Send back on port 3123 text:  IPV4|DeviceName|UniqueID  
-
-
-
+Int 3123  Send back on port 3123 text:  IPV4|DeviceName|UniqueID|AllowedMask 
 
 
 # Compute Control
