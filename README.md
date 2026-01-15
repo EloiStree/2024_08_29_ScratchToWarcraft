@@ -252,11 +252,13 @@ If in OS context
 | Mouse Button 4         | 1263  | 2263    |
 | Mouse Button 5         | 1264  | 2264    |
 | Mouse Double Click Left | 1265  | 2265    |
-| Mouse Triple Click Left | 1266  | 2266    |
+| Mouse Double Click Middle | 1266 | 2266    |
 | Mouse Double Click Right | 1267 | 2267    |
-| Mouse Triple Click Right | 1268 | 2268    |
+| Scroll Up | 1268 | 2268    |
+| Scroll Down | 1269 | 2269    |
+| Scroll Left | 1270 | 2270    |
+| Scroll Right | 1271 | 2271    |
 
-This is properly aligned and ensures clarity for readers.
 
 
 
