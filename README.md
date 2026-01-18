@@ -987,3 +987,26 @@ You can apparently do so much more with USB... But I am not sure it would be wis
 
 
 
+## NES Mini Multiplayer Game
+
+For this project, I created two Unity packages to support NES-style mini-games with multiplayer functionality.
+Each action is mapped to an integer value from the Xbox controller input system.
+
+Package:
+- https://github.com/EloiStree/2026_01_18_upm_nes_controller_udp
+- https://github.com/EloiStree/2026_01_18_upm_nes_udp_multiplayer
+
+Use the following mappings to play the mini-games:
+
+| Action      | Player 1 | Player 2 |
+| ----------- | -------- | -------- |
+| Menu Left   | 1309     | 2309     |
+| Menu Right  | 1308     | 2308     |
+| Up Arrow    | 1331     | 2331     |
+| Down Arrow  | 1335     | 2335     |
+| Left Arrow  | 1337     | 2337     |
+| Right Arrow | 1333     | 2333     |
+| A Button    | 1300     | 2300     |
+| B Button    | 1301     | 2301     |
+
+
